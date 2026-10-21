@@ -1,0 +1,43 @@
+    <!-- HERO: illustrative order-book terrain behind the headline. Scroll tilts it from oblique to a top-down heatmap. -->
+    <section class="hero hero-terrain" id="hero" aria-labelledby="hero-h">
+      <link rel="stylesheet" href="assets/terrain/terrain.css?v=1">
+      <div class="terrain-stage">
+        <div class="terrain-scene" aria-hidden="true">
+          <canvas class="terrain-static"></canvas>
+          <div class="terrain-labels">
+            <span class="terrain-tlabel" data-k="lo">1¢</span>
+            <span class="terrain-tlabel" data-k="hi">99¢</span>
+            <span class="terrain-tlabel is-bid" data-k="bids">bids</span>
+            <span class="terrain-tlabel is-ask" data-k="asks">asks</span>
+            <span class="terrain-tlabel" data-k="now">now</span>
+            <span class="terrain-tlabel" data-k="old">earlier</span>
+          </div>
+        </div>
+
+        <div class="wrap terrain-grid">
+          <div class="terrain-text">
+            <p class="label reveal">Columbia University · Mathematics &amp; Statistics · Class of 2028</p>
+            <h1 class="reveal" id="hero-h">Predicted <span class="vs">vs.</span> observed.</h1>
+            <p class="lede reveal">I'm Aviv Pinto. I build models of markets and the tools that check them, and I show where they break. Seeking quant trading and research internships for Summer 2027.</p>
+            <div class="cta reveal">
+              <a class="btn primary" href="#lobkit">lobkit: 9,995 orders →</a>
+              <a class="btn" href="https://github.com/ap4475-stack" rel="noopener">GitHub</a>
+            </div>
+            <p class="terrain-stat reveal"><b>lobkit</b> · Brier 0.0502 vs 0.0539 base · 9,995 orders · 209 markets</p>
+          </div>
+        </div>
+
+        <p class="terrain-heatcap" aria-hidden="true">Top-down, the same book reads as a heatmap: price across, time down, stronger color means deeper.</p>
+        <div class="wrap terrain-hud">
+          <p class="terrain-illus"><span class="terrain-dot" aria-hidden="true"></span>Illustrative order-book depth, not market data</p>
+          <p class="terrain-legend" aria-hidden="true">
+            <span><i class="terrain-sw is-bid"></i>bid depth</span>
+            <span><i class="terrain-sw is-ask"></i>ask depth</span>
+            <span class="terrain-axes">x price · z time · y depth</span>
+            <span class="terrain-mode">view: oblique</span>
+          </p>
+        </div>
+        <p class="terrain-sr">Decorative surface behind the headline: synthetic order-book depth across price levels and time, bids in teal and asks in slate. Illustrative only, not market data.</p>
+      </div>
+      <script src="assets/terrain/terrain.js?v=1" defer></script>
+    </section>

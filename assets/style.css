@@ -62,12 +62,23 @@ h1, h2, h3 { font-family: var(--head); font-weight: 600; margin: 0; letter-spaci
   background: none; border: 1px solid var(--line); color: var(--text);
   width: 44px; height: 44px; border-radius: 8px; cursor: pointer; font-size: 1rem; flex: none;
 }
-@media (max-width: 480px) {
+.mode {
+  display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 12px; flex: none;
+  border: 1px solid var(--line); border-radius: 8px; color: var(--text); text-decoration: none;
+  font: 500 0.8125rem var(--mono);
+}
+.mode:hover { border-color: var(--accent); }
+.mode-ico { color: var(--accent); }
+@media (max-width: 680px) {
   .nav nav .opt { display: none; }
+  .mode-txt { display: none; }
+  .mode { padding: 0 10px; }
+}
+@media (max-width: 480px) {
   .nav nav a { padding: 12px 6px; }
   .brand { font-size: 0.8125rem; }
+  .nav nav .opt-xs { display: none; }
 }
-@media (max-width: 380px) { .nav nav .opt-xs { display: none; } }
 
 /* hero */
 .hero {

@@ -18,7 +18,10 @@ Each assignment goes to one bot. A bot edits only the files in its lane. Cross-l
 | Coordinator | `@coord` | Splits work, assigns lanes, integrates, owns every Git action and board update | `AGENTS.md`, `docs/BULLETIN.md`, Git |
 | Design | `@design` | Visual system: tokens, type, layout, motion, mobile, dark and light | `docs/DESIGN.md`, `assets/style.css` |
 | Relevance | `@relevance` | Picks what goes on the site for the audience (quant trading, quant research, AI engineering) and what stays off | `docs/CONTENT.md` |
-| Build | `@build` | Turns DESIGN.md and CONTENT.md into the page | `index.html`, `assets/main.js` |
+| Build (coordinator) | `@build` | Assembles the page from partials; nav, exhibits B to F, skills, about, contact | `index.html`, `assets/main.js`, `assets/style.css`, `scripts/` |
+| Hero | `@build-hero` | 3D order-book terrain hero | `partials/hero.html`, `assets/terrain/` |
+| Story | `@build-story` | Exhibit A: the scroll-told lobkit story | `partials/lobkit-story.html`, `assets/story/` |
+| Terminal | `@build-terminal` | The alternate terminal mode | `terminal/` |
 | Design QA | `@qa-design` | Read-only review: contrast, responsive, motion, slop check | nothing (reports only) |
 | Fact check | `@qa-facts` | Read-only review: every claim and number traces to a source in CONTENT.md; every link resolves | nothing (reports only) |
 
@@ -58,7 +61,11 @@ Design and Relevance run in parallel. Build waits for both. Both QA bots review 
 ## Commands
 
 ```sh
-python3 -m http.server 4321   # preview at http://localhost:4321
+python3 scripts/assemble.py   # splice partials/*.html into index.html (between <!-- partial:NAME --> markers)
+python3 scripts/charts.py     # regenerate data charts in index.html
+python3 -m http.server 4321   # preview at http://localhost:4321 (terminal mode at /terminal/)
 ```
+
+Lanes never edit `index.html` directly: they own a partial, and the coordinator runs `assemble.py`. Prototypes live in `explorations/` and are not linked from the site.
 
 Deploy: any static host (GitHub Pages or Vercel, both free). A domain is the only cost.

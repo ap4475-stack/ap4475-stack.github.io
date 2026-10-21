@@ -1,0 +1,111 @@
+/* Hero: order-book terrain. Every rule is scoped to .hero-terrain; no :root tokens are redefined.
+   Colors come from the site tokens (--bg --line --surface --text --muted --accent). --ask is local:
+   asks use a neutral slate because DESIGN.md reserves --neg (red) for real negatives and stated limits. */
+.hero-terrain {
+  --ask: #7c8db5;
+  --terrain-nav: 56px;
+  --terrain-h: clamp(600px, calc(100vh - var(--terrain-nav)), 920px);
+  --terrain-track: 0px;
+}
+@supports (height: 100svh) {
+  .hero-terrain { --terrain-h: clamp(600px, calc(100svh - var(--terrain-nav)), 920px); }
+}
+:root[data-theme="light"] .hero-terrain { --ask: #4b5b86; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .hero-terrain { --ask: #4b5b86; }
+}
+
+/* reset the generic .hero grid from style.css for this variant */
+.hero.hero-terrain {
+  display: block; position: relative; gap: 0; padding: 0;
+  border-bottom: 1px solid var(--line);
+}
+/* motion mode (set by terrain.js): a scroll track taller than the sticky stage tilts the camera */
+.hero-terrain.terrain-motion { --terrain-track: 560px; height: calc(var(--terrain-h) + var(--terrain-track)); }
+@media (max-width: 719px) { .hero-terrain.terrain-motion { --terrain-track: 420px; } }
+
+.terrain-stage { position: relative; min-height: var(--terrain-h); overflow: hidden; }
+.terrain-motion .terrain-stage { position: sticky; top: var(--terrain-nav); height: var(--terrain-h); }
+
+.terrain-scene { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.terrain-scene canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.terrain-static { opacity: 0; }
+.terrain-gl { opacity: 0; transition: opacity .5s ease-out; }
+.hero-terrain.is-static .terrain-static { opacity: 1; }
+.hero-terrain.is-gl .terrain-gl { opacity: 1; }
+.hero-terrain.is-gl .terrain-static { opacity: 0; }
+
+/* text column: left on desktop, top on mobile. The scene is weighted right (desktop) or below
+   (mobile); a solid scrim in the page color guarantees text contrast equals the token contrast
+   if a ridge ever passes behind the column. */
+.terrain-grid { position: relative; z-index: 2; pointer-events: none; padding-top: clamp(40px, 9vh, 120px); padding-bottom: 120px; }
+.terrain-text {
+  pointer-events: auto; max-width: 556px;
+  margin-left: -20px; padding: 16px 20px 20px; border-radius: 8px;
+  background: var(--bg);
+}
+.terrain-text:focus-within { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+.hero-terrain h1 { font-size: clamp(2.5rem, 7vw, 5.25rem); line-height: 1; margin: 0; }
+.hero-terrain .lede { margin: 20px 0 24px; max-width: 48ch; }
+.hero-terrain .btn { background: var(--bg); }
+.hero-terrain .btn.primary { background: var(--accent); }
+.terrain-stat {
+  margin: 18px 0 0; font: 400 0.8125rem/1.5 var(--mono); color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.terrain-stat b { color: var(--text); font-weight: 500; }
+
+/* projected axis labels (positioned by terrain.js) */
+.terrain-labels { position: absolute; inset: 0; }
+.terrain-tlabel {
+  position: absolute; left: 0; top: 0; opacity: 0; white-space: nowrap;
+  font: 500 0.6875rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted); background: var(--bg); padding: 3px 5px; border-radius: 3px;
+}
+.terrain-tlabel.is-bid { color: var(--accent); }
+.terrain-tlabel.is-ask { color: var(--ask); }
+
+.terrain-heatcap {
+  position: absolute; z-index: 2; left: 50%; top: 20px; transform: translateX(-50%);
+  width: min(92%, 560px); margin: 0; text-align: center; opacity: 0; pointer-events: none;
+  font: 500 0.75rem/1.5 var(--mono); letter-spacing: 0.04em; color: var(--text);
+  background: var(--bg); border: 1px solid var(--line); padding: 8px 12px; border-radius: 4px;
+}
+
+/* HUD: the illustrative label is always visible, in every mode */
+.terrain-hud {
+  position: absolute; left: 0; right: 0; bottom: 16px; z-index: 2;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px;
+}
+.terrain-hud p { margin: 0; font: 500 0.6875rem/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.terrain-illus {
+  display: inline-flex; align-items: center; gap: 8px; color: var(--text);
+  background: var(--bg); border: 1px solid var(--line); padding: 6px 10px; border-radius: 4px;
+}
+.terrain-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); flex: none; }
+.terrain-legend {
+  display: flex; flex-wrap: wrap; gap: 6px 16px; color: var(--muted);
+  background: var(--bg); padding: 4px 6px; border-radius: 4px;
+}
+.terrain-sw { display: inline-block; width: 14px; height: 2px; margin-right: 6px; vertical-align: middle; }
+.terrain-sw.is-bid { background: var(--accent); }
+.terrain-sw.is-ask { background: var(--ask); }
+.terrain-mode { color: var(--text); }
+.hero-terrain:not(.is-gl) .terrain-mode, .hero-terrain:not(.is-gl) .terrain-heatcap { display: none; }
+/* no JS or no scene at all: keep the text, drop the legend for a scene that is not there */
+.hero-terrain:not(.is-gl):not(.is-static) .terrain-legend,
+.hero-terrain:not(.is-gl):not(.is-static) .terrain-labels { display: none; }
+
+.terrain-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; margin: 0; }
+
+@media (max-width: 719px) {
+  .terrain-grid { padding-top: 24px; }
+  .terrain-text { width: auto; max-width: none; margin-left: -12px; margin-right: -12px; padding: 12px; }
+  .hero-terrain .lede { font-size: 1rem; }
+  .terrain-axes { display: none; }
+  .terrain-hud { bottom: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-terrain.terrain-motion { --terrain-track: 0px; }
+  .terrain-gl { transition: none; }
+}
