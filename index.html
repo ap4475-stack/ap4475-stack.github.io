@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aviv Pinto</title>
-  <meta name="description" content="Aviv Pinto, Columbia Mathematics and Statistics. Market microstructure models, trading tools and AI agents.">
+  <meta name="description" content="Aviv Pinto, Columbia Mathematics and Statistics. Market microstructure models, trading tools and AI agents, shown with their evidence.">
   <meta name="theme-color" content="#0b0e11">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0e11'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' fill='%2326a69a' text-anchor='middle'%3Eap%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0e11'/%3E%3Cpath d='M7 25 L25 7' stroke='%2326a69a' stroke-width='2.5' stroke-dasharray='3 3'/%3E%3Ccircle cx='11' cy='19' r='2.6' fill='%23f8fafc'/%3E%3Ccircle cx='20' cy='11' r='2.6' fill='%23f8fafc'/%3E%3C/svg%3E">
   <script>document.documentElement.classList.add('js');window.__failsafe=setTimeout(function(){document.documentElement.classList.remove('js')},3000);try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap">
-  <link rel="stylesheet" href="assets/style.css?v=3">
+  <link rel="stylesheet" href="assets/style.css?v=4">
 </head>
 <body>
   <a class="skip" href="#work">Skip to work</a>
@@ -30,88 +30,230 @@
   </header>
 
   <main id="top">
+    <!-- HERO: the signature is a real calibration plot -->
     <section class="hero wrap">
-      <p class="label reveal">Columbia University · Mathematics &amp; Statistics</p>
-      <h1 class="reveal">I build models of markets, and the tools to test them honestly.</h1>
-      <p class="lede reveal">Order-book simulation, calibration and leakage controls on the quant side. Tool-using AI agents on the engineering side. Seeking quant trading and research internships, Summer 2027.</p>
-      <ul class="facts reveal" aria-label="Quick facts">
-        <li><span>class of</span> 2028</li>
-        <li><span>lang</span> Python · Java · SQL</li>
-        <li><span>focus</span> microstructure</li>
-      </ul>
-      <div class="cta reveal">
-        <a class="btn primary" href="#work">See the work</a>
-        <a class="btn" href="https://github.com/ap4475-stack" rel="noopener">GitHub</a>
+      <div class="hero-text">
+        <p class="label reveal">Columbia University · Mathematics &amp; Statistics · Class of 2028</p>
+        <h1 class="reveal">Predicted <span class="vs">vs.</span> observed.</h1>
+        <p class="lede reveal">I'm Aviv Pinto. I build models of markets and the tools that check them, and I show where they break. Seeking quant trading and research internships for Summer 2027.</p>
+        <div class="cta reveal">
+          <a class="btn primary" href="#work">See the exhibits</a>
+          <a class="btn" href="https://github.com/ap4475-stack" rel="noopener">GitHub</a>
+        </div>
       </div>
+      <figure class="hero-plot reveal">
+        <!-- chart:calibration -->
+<svg class="chart calib" viewBox="0 0 420 420" role="img" aria-labelledby="calib-t calib-d">
+<title id="calib-t">lobkit fill calibration</title>
+<desc id="calib-d">Predicted versus observed fill rate in seven bins. Points sit close to the diagonal; the worst gap among bins with at least 25 orders is 0.078.</desc>
+<line class="grid" x1="44.0" y1="376.0" x2="408.0" y2="376.0"/>
+<line class="grid" x1="44.0" y1="376.0" x2="44.0" y2="12.0"/>
+<text class="tick" x="44.0" y="394.0" text-anchor="middle">0.0</text>
+<text class="tick" x="36.0" y="380.0" text-anchor="end">0.0</text>
+<line class="grid" x1="44.0" y1="285.0" x2="408.0" y2="285.0"/>
+<line class="grid" x1="135.0" y1="376.0" x2="135.0" y2="12.0"/>
+<text class="tick" x="135.0" y="394.0" text-anchor="middle">0.2</text>
+<text class="tick" x="36.0" y="289.0" text-anchor="end">0.2</text>
+<line class="grid" x1="44.0" y1="194.0" x2="408.0" y2="194.0"/>
+<line class="grid" x1="226.0" y1="376.0" x2="226.0" y2="12.0"/>
+<text class="tick" x="226.0" y="394.0" text-anchor="middle">0.4</text>
+<text class="tick" x="36.0" y="198.0" text-anchor="end">0.4</text>
+<line class="grid" x1="44.0" y1="103.0" x2="408.0" y2="103.0"/>
+<line class="grid" x1="317.0" y1="376.0" x2="317.0" y2="12.0"/>
+<text class="tick" x="317.0" y="394.0" text-anchor="middle">0.6</text>
+<text class="tick" x="36.0" y="107.0" text-anchor="end">0.6</text>
+<line class="grid" x1="44.0" y1="12.0" x2="408.0" y2="12.0"/>
+<line class="grid" x1="408.0" y1="376.0" x2="408.0" y2="12.0"/>
+<text class="tick" x="408.0" y="394.0" text-anchor="middle">0.8</text>
+<text class="tick" x="36.0" y="16.0" text-anchor="end">0.8</text>
+<line class="diag" x1="44.0" y1="376.0" x2="408.0" y2="12.0" pathLength="1"/>
+<polyline class="curve" points="50.4,356.0 109.1,275.4 152.3,245.9 201.4,210.4 248.3,141.7 332.5,103.0 386.2,47.5" pathLength="1"/>
+<circle class="pt" style="--i:0" cx="50.4" cy="356.0" r="9.4"><title>predicted 0.014, observed 0.044, n = 9,518</title></circle>
+<circle class="pt" style="--i:1" cx="109.1" cy="275.4" r="6.8"><title>predicted 0.143, observed 0.221, n = 231</title></circle>
+<circle class="pt" style="--i:2" cx="152.3" cy="245.9" r="6.2"><title>predicted 0.238, observed 0.286, n = 98</title></circle>
+<circle class="pt" style="--i:3" cx="201.4" cy="210.4" r="5.6"><title>predicted 0.346, observed 0.364, n = 44</title></circle>
+<circle class="pt" style="--i:4" cx="248.3" cy="141.7" r="5.4"><title>predicted 0.449, observed 0.515, n = 33</title></circle>
+<circle class="pt" style="--i:5" cx="332.5" cy="103.0" r="4.9"><title>predicted 0.634, observed 0.600, n = 15</title></circle>
+<circle class="pt" style="--i:6" cx="386.2" cy="47.5" r="5.0"><title>predicted 0.752, observed 0.722, n = 18</title></circle>
+<text class="axis" x="226.0" y="414" text-anchor="middle">predicted fill probability</text>
+<text class="axis" transform="translate(12 194.0) rotate(-90)" text-anchor="middle">observed</text>
+<text class="note" x="253.3" y="212.2">y = x</text>
+</svg>
+<!-- /chart:calibration -->
+        <figcaption><span class="label">Exhibit A, live data</span>Fill calibration from lobkit: 9,995 simulated orders across 209 Kalshi markets. Dot size grows with orders per bin. A perfect model sits on the dashed line.</figcaption>
+      </figure>
     </section>
 
     <section id="work" class="wrap section">
       <div class="section-head">
-        <p class="label">01 · Selected work</p>
-        <h2>What I have built</h2>
+        <p class="label">01 · Exhibits</p>
+        <h2>Six projects, each with its evidence</h2>
+        <p class="muted head-note">Every number below traces to the project's own files. Mockups are labeled as mockups.</p>
       </div>
 
-      <div class="grid">
-        <article class="card reveal feature">
-          <div class="meta"><span class="idx">01</span><span class="tag">Research</span><span>2026</span></div>
+      <!-- A: lobkit -->
+      <article class="exhibit feature reveal" id="lobkit">
+        <div class="ex-text">
+          <div class="meta"><span class="idx">A</span><span class="tag">Research</span><span>Market microstructure · 2026</span></div>
           <h3>lobkit</h3>
-          <p class="one">Rebuilds Kalshi limit-order books from L2 data and estimates the chance that a resting order fills, calibrated against a conservative lower-bound fill truth. Every number is tagged observed, derived, estimated or assumed.</p>
-          <div class="metric">
-            <div><strong data-count="0.0502" data-dp="4">0.0502</strong><span>Brier score, vs 0.0539 base rate</span></div>
-            <div><strong data-count="9995">9,995</strong><span>simulated orders, 209 markets</span></div>
-            <div><strong>0.67–0.70</strong><span>AUC on a held-out half</span></div>
-          </div>
-          <p class="scope">Leakage control: pair each prediction with another level's outcome and Brier skill over the base rate falls from +0.069 to −0.122, as it must in a leak-free pipeline. Limit stated up front: 44.6% of orders are ambiguous from L2 data alone.</p>
-          <ul class="chips"><li>Python</li><li>market microstructure</li><li>calibration</li><li>119 tests</li></ul>
+          <p class="one">Rebuilds Kalshi limit-order books from L2 data and estimates the chance that a resting order fills. Every number carries a tag: observed, derived, estimated or assumed.</p>
+          <dl class="spec">
+            <div><dt>Brier</dt><dd><strong data-count="0.0502" data-dp="4">0.0502</strong> vs 0.0539 base rate</dd></div>
+            <div><dt>AUC</dt><dd><strong>0.67–0.70</strong> on a held-out half</dd></div>
+            <div><dt>Worst gap</dt><dd><strong>0.078</strong> in bins with n ≥ 25</dd></div>
+          </dl>
+          <ul class="chips"><li>Python</li><li>calibration</li><li>Gamma-Poisson shrinkage</li><li>119 tests</li></ul>
           <p class="links"><span class="muted">Code private · walkthrough on request</span></p>
-        </article>
+        </div>
+        <div class="ex-visual">
+          <div class="control" role="img" aria-label="Brier skill: plus 0.069 on real outcomes, minus 0.122 when outcomes are shuffled across levels">
+            <p class="label">Leakage control</p>
+            <div class="ctl-row"><span>real outcomes</span><div class="ctl-track"><i class="ctl-bar pos" style="--w:28.3%"></i></div><b>+0.069</b></div>
+            <div class="ctl-row"><span>shuffled outcomes</span><div class="ctl-track"><i class="ctl-bar neg" style="--w:50%"></i></div><b>−0.122</b></div>
+            <p class="ctl-note">Brier skill over the base rate. Pair each prediction with another level's outcome and the signal collapses, as it must in a leak-free pipeline.</p>
+          </div>
+          <div class="limit">
+            <p class="label">Stated limit</p>
+            <p><strong>44.6%</strong> of orders are ambiguous from L2 data alone. Whether they filled depends on where unseen cancellations sat, and no model closes that gap.</p>
+          </div>
+        </div>
+      </article>
 
-        <article class="card reveal">
-          <div class="meta"><span class="idx">02</span><span class="tag live">Live</span><span class="tag">Team</span><span>2026</span></div>
+      <!-- B: CallIt -->
+      <article class="exhibit reveal" id="callit">
+        <div class="ex-text">
+          <div class="meta"><span class="idx">B</span><span class="tag live">Live</span><span class="tag">Team of 5</span><span>2026</span></div>
           <h3>CallIt</h3>
           <p class="one">A group prediction app. A private group posts a call, everyone answers once, and the group sees who called it.</p>
-          <div class="metric"><div><strong>5</strong><span>person team · 300+ commits</span></div></div>
-          <p class="scope">My role: marketing manager, the CallIt coin, and UI design of the game flow.</p>
-          <ul class="chips"><li>Next.js</li><li>Supabase</li><li>product design</li></ul>
-          <p class="links"><a href="https://call-it.app" rel="noopener">call-it.app ↗</a><a href="https://app.call-it.app" rel="noopener">app ↗</a></p>
-        </article>
+          <p class="role"><span class="label">My role</span>Marketing manager. I designed the CallIt coin and the UI of the game flow with our developer.</p>
+          <ul class="chips"><li>Next.js</li><li>Supabase</li><li>product design</li><li>300+ commits</li></ul>
+          <p class="links"><a href="https://call-it.app" rel="noopener">call-it.app ↗</a><a href="https://app.call-it.app" rel="noopener">open the app ↗</a></p>
+        </div>
+        <div class="ex-visual phone-wrap">
+          <figure class="phone">
+            <img src="assets/img/callit-live.jpg" width="560" height="1120" loading="lazy" alt="The CallIt landing page on a phone: headline 'We remember who called the vote.' with a 'Priya called Yes' chip and a 'Closes 6:45 PM' chip.">
+          </figure>
+          <p class="cap">call-it.app, captured Oct 20, 2026</p>
+        </div>
+      </article>
 
-        <article class="card reveal">
-          <div class="meta"><span class="idx">03</span><span class="tag">Build</span><span>2026</span></div>
+      <!-- C: Nudge -->
+      <article class="exhibit reveal" id="nudge">
+        <div class="ex-text">
+          <div class="meta"><span class="idx">C</span><span class="tag">AI agent</span><span>2026</span></div>
           <h3>Nudge</h3>
-          <p class="one">An AI receivables agent. It follows up on unpaid invoices over WhatsApp and Gmail, logs promises to pay and disputes, and hands off to a human when needed.</p>
-          <div class="metric"><div><strong>60+</strong><span>tests · ~8.3k lines TypeScript</span></div></div>
+          <p class="one">An AI receivables agent for small businesses. It chases unpaid invoices over WhatsApp and Gmail, reads the replies with a Claude tool-use loop, and hands off to a person when the conversation needs one.</p>
+          <dl class="spec">
+            <div><dt>Tests</dt><dd><strong>60+</strong> · ~8.3k lines TypeScript</dd></div>
+            <div><dt>Safety</dt><dd>Row-level security on every table; signed webhooks</dd></div>
+          </dl>
           <ul class="chips"><li>Claude tool use</li><li>Next.js 15</li><li>Postgres RLS</li><li>WhatsApp API</li></ul>
           <p class="links"><span class="muted">Code private</span></p>
-        </article>
+        </div>
+        <div class="ex-visual">
+          <ol class="cadence" aria-label="Reminder cadence">
+            <li><b>−3d</b>heads-up</li><li><b>0</b>due</li><li><b>+3</b></li><li><b>+7</b></li><li><b>+14</b></li><li><b>+30</b></li><li class="esc"><b>→</b>human</li>
+          </ol>
+          <div class="chat" aria-label="Mockup of a conversation">
+            <p class="msg them">Hi, can I pay invoice 1042 on Friday?</p>
+            <p class="tool"><code>record_promise_to_pay</code> date: Friday · reminders paused</p>
+            <p class="msg us">Thanks, Friday works. I've paused reminders until then.</p>
+            <p class="msg them">Actually the amount looks wrong.</p>
+            <p class="tool warn"><code>flag_dispute</code> → <code>escalate_to_human</code></p>
+          </div>
+          <p class="cap">Mockup. The tool names and cadence steps come from the codebase.</p>
+        </div>
+      </article>
 
-        <article class="card reveal">
-          <div class="meta"><span class="idx">04</span><span class="tag">Build</span><span>2026</span></div>
-          <h3>Research Agent</h3>
-          <p class="one">A local research workspace that stores evidence and uncertainty before it ranks anything. Unknown is never scored as low.</p>
-          <div class="metric"><div><strong data-count="485">485</strong><span>tests in 42 files · ~16.4k lines</span></div></div>
-          <ul class="chips"><li>Python</li><li>evidence model</li><li>LLM pipelines</li></ul>
-          <p class="links"><span class="muted">Code private</span></p>
-        </article>
-
-        <article class="card reveal">
-          <div class="meta"><span class="idx">05</span><span class="tag">Tool</span><span>2026</span></div>
+      <!-- D: quant-roles -->
+      <article class="exhibit reveal" id="quant-roles">
+        <div class="ex-text">
+          <div class="meta"><span class="idx">D</span><span class="tag">Tool</span><span>2026</span></div>
           <h3>quant-roles</h3>
-          <p class="one">Pulls quant roles from public job-board APIs into one list and checks each link before it ships.</p>
-          <div class="metric"><div><strong data-count="144">144</strong><span>roles across 26 firms · Aug 28 snapshot</span></div></div>
-          <ul class="chips"><li>Python</li><li>public APIs</li><li>link checking</li></ul>
+          <p class="one">Pulls quant roles from public job-board APIs into one list and checks each link before it ships. A full rerun is free and takes about four minutes.</p>
+          <dl class="spec">
+            <div><dt>Snapshot</dt><dd><strong data-count="144">144</strong> roles across 26 firms, Aug 28</dd></div>
+          </dl>
+          <ul class="chips"><li>Python</li><li>Greenhouse / Lever APIs</li><li>link checking</li></ul>
           <p class="links"><span class="muted">Code private</span></p>
-        </article>
+        </div>
+        <div class="ex-visual">
+          <p class="label">Roles per firm, top 8</p>
+          <!-- chart:firms -->
+<svg class="chart bars" viewBox="0 0 420 248" role="img" aria-labelledby="firms-t">
+<title id="firms-t">Roles per firm, top 8 of 26, Aug 28 snapshot</title>
+<text class="tick" x="122" y="21" text-anchor="end">Jump Trading</text>
+<rect class="bar" style="--i:0" x="132" y="9" width="248.0" height="16" rx="3"/>
+<text class="val" x="388.0" y="21">29</text>
+<text class="tick" x="122" y="51" text-anchor="end">IMC Trading</text>
+<rect class="bar" style="--i:1" x="132" y="39" width="153.9" height="16" rx="3"/>
+<text class="val" x="293.9" y="51">18</text>
+<text class="tick" x="122" y="81" text-anchor="end">Point72</text>
+<rect class="bar" style="--i:2" x="132" y="69" width="102.6" height="16" rx="3"/>
+<text class="val" x="242.6" y="81">12</text>
+<text class="tick" x="122" y="111" text-anchor="end">AQR</text>
+<rect class="bar" style="--i:3" x="132" y="99" width="102.6" height="16" rx="3"/>
+<text class="val" x="242.6" y="111">12</text>
+<text class="tick" x="122" y="141" text-anchor="end">Virtu Financial</text>
+<rect class="bar" style="--i:4" x="132" y="129" width="68.4" height="16" rx="3"/>
+<text class="val" x="208.4" y="141">8</text>
+<text class="tick" x="122" y="171" text-anchor="end">Tower Research</text>
+<rect class="bar" style="--i:5" x="132" y="159" width="68.4" height="16" rx="3"/>
+<text class="val" x="208.4" y="171">8</text>
+<text class="tick" x="122" y="201" text-anchor="end">DV Trading</text>
+<rect class="bar" style="--i:6" x="132" y="189" width="68.4" height="16" rx="3"/>
+<text class="val" x="208.4" y="201">8</text>
+<text class="tick" x="122" y="231" text-anchor="end">Qube RT</text>
+<rect class="bar" style="--i:7" x="132" y="219" width="42.8" height="16" rx="3"/>
+<text class="val" x="182.8" y="231">5</text>
+</svg>
+<!-- /chart:firms -->
+        </div>
+      </article>
 
-        <article class="card reveal">
-          <div class="meta"><span class="idx">06</span><span class="tag">Tool</span><span>2026</span></div>
+      <!-- E: Orchestra -->
+      <article class="exhibit reveal" id="orchestra">
+        <div class="ex-text">
+          <div class="meta"><span class="idx">E</span><span class="tag">Agents</span><span>2026</span></div>
           <h3>Orchestra</h3>
-          <p class="one">A cost-aware multi-agent runner. A frontier model plans, cheap local or cloud models do the work, and a SQLite ledger records every call.</p>
-          <div class="metric"><div><strong>2</strong><span>max delegation depth, by design</span></div></div>
+          <p class="one">A cost-aware multi-agent runner. Expensive tokens plan, cheap tokens type. Every model call is one row in a SQLite ledger.</p>
+          <dl class="spec">
+            <div><dt>Depth cap</dt><dd><strong>2</strong>: a worker cannot recruit</dd></div>
+          </dl>
           <ul class="chips"><li>Python</li><li>Ollama</li><li>SQLite</li></ul>
           <p class="links"><span class="muted">Code private</span></p>
-        </article>
-      </div>
+        </div>
+        <div class="ex-visual">
+          <ol class="tiers">
+            <li><b>Conductor</b><span>frontier model · reads the goal, cuts tickets, judges the end</span></li>
+            <li><b>Dept head</b><span>mid model · turns a ticket into a brief a cheap model can't misread</span></li>
+            <li class="cheap"><b>Worker</b><span>local or cloud model · does the work, returns one capped page</span></li>
+            <li><b>Reviewer</b><span>mid model · accepts, retries once, or escalates</span></li>
+          </ol>
+          <p class="ledger"><code>ledger</code> one SQLite row per model call</p>
+        </div>
+      </article>
+
+      <!-- F: Research Agent -->
+      <article class="exhibit reveal" id="research-agent">
+        <div class="ex-text">
+          <div class="meta"><span class="idx">F</span><span class="tag">Data</span><span>2026</span></div>
+          <h3>Research Agent</h3>
+          <p class="one">A local research workspace that stores evidence and uncertainty before it ranks anything. Missing data never counts as negative evidence.</p>
+          <dl class="spec">
+            <div><dt>Tests</dt><dd><strong data-count="485">485</strong> in 42 files</dd></div>
+          </dl>
+          <ul class="chips"><li>Python</li><li>Streamlit</li><li>evidence model</li></ul>
+          <p class="links"><span class="muted">Code private</span></p>
+        </div>
+        <div class="ex-visual">
+          <pre class="rules" aria-label="The four rules the codebase is built around"><span class="c"># evidence first. rank second.</span>
+UNKNOWN        <i>!=</i> LOW
+LOW VISIBILITY <i>!=</i> LOW RELEVANCE
+CONFLICTING    <i>!=</i> FALSE
+STALE          <i>!=</i> FALSE</pre>
+        </div>
+      </article>
     </section>
 
     <section id="skills" class="wrap section">
@@ -134,8 +276,8 @@
       </div>
       <div class="about reveal">
         <p>I study Mathematics and Statistics at Columbia and graduate in May 2028.</p>
-        <p>I care most about whether a number is true. My models report what they cannot know, run a control that should destroy the signal, and choose parameters on held-out data.</p>
-        <p>I build with AI agents every day, and I build the systems that keep them in check: lanes, ledgers and reviewers.</p>
+        <p>I care most about whether a number is true. My models report what they cannot know. They run a control that should destroy the signal, and they choose parameters on held-out data.</p>
+        <p>I build with AI agents every day. I also build the systems that keep them in check: lanes, ledgers and reviewers. This site was built that way too, with separate design, content, build and fact-check agents.</p>
       </div>
     </section>
 
@@ -153,6 +295,6 @@
     <span class="muted">Static HTML · no analytics</span>
   </footer>
 
-  <script src="assets/main.js?v=3" defer></script>
+  <script src="assets/main.js?v=4" defer></script>
 </body>
 </html>

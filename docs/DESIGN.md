@@ -1,8 +1,20 @@
 # DESIGN (owned by @design)
 
-Direction: an editorial, terminal-style dark page. It combines Ariel Ben Avi's dense project ledger, Yuval Gerber's metrics row, and the hairline rules, tracked mono labels and spec lists of Scrolltide's Tide and KAEL-9 templates. No cinematic frame-scrub, because it reads as an agency site rather than a quant's.
+## Concept: "Predicted vs. observed"
 
-Scrolltide note: the full template prompts are paywalled ($299 "Unlimited"). Only the summaries were studied, and none of their code is used.
+The site is a research notebook. Each project is an **exhibit**: a claim on one side and its instrument on the other. Instruments include a chart, a timeline, a diagram or a live capture. The thesis is that Aviv shows the evidence and the limit, not just the result.
+
+- **Signature motif:** the y = x calibration line. The hero is lobkit's real reliability diagram: seven bins and 9,995 orders, drawn on scroll.
+- **Exhibits A to F** alternate text and visual left and right. Each visual is honest about what it is:
+  - A, lobkit: a diverging bar for the leakage control, plus a red "stated limit" panel (real data).
+  - B, CallIt: the live landing page in a phone frame (a real capture, with its date).
+  - C, Nudge: the reminder cadence track and a chat mockup with tool-call chips. It is labeled a mockup; the tool names are real.
+  - D, quant-roles: roles per firm, as bars from the Aug 28 snapshot (real data).
+  - E, Orchestra: the four-tier stack with the depth cap (real structure).
+  - F, Research Agent: the codebase's four rules as type.
+- Charts are inline SVG generated from data by `scripts/charts.py`, themed by CSS tokens, so they work in dark and light.
+
+Inspiration: Scrolltide's Tide and KAEL-9 (hairlines, tracked mono labels, spec lists), Ariel Ben Avi's ledger density, and Yuval Gerber's metrics. Scrolltide's full prompts are paywalled, so only the public summaries were used.
 
 ## Tokens
 
@@ -16,26 +28,21 @@ Scrolltide note: the full template prompts are paywalled ($299 "Unlimited"). Onl
 | `--muted` | `#94a3b8` | `#5b6676` |
 | `--accent` | `#26a69a` | `#00796b` |
 | `--accent-2` | `#5b8cff` (links, focus) | `#1d4ed8` |
-
-`#2962ff` is too dark for link text on `#0b0e11`, so links lighten to `#5b8cff` in dark mode.
+| `--neg` | `#ef5350` (only for real negative or limit) | `#c62828` |
 
 ## Type
-- Space Grotesk 500/600 for headings, Inter 400/500 for body, JetBrains Mono for numbers, labels and chips (`tabular-nums`).
-- H1 `clamp(2.5rem, 6vw, 4.5rem)`. Labels are 0.75rem mono, uppercase, +0.08em tracking.
-- Max width 1100px, an 8px grid, 8px radius, 1px hairlines, no shadows.
-
-## Sections
-Nav, Hero (positioning line and fact chips), Selected work (6 cards), Skills, About, Contact, Footer.
-
-## Card anatomy
-Index `01`, status tag and year. Then the name and a one-line outcome, a hairline, one big mono metric with its scope line, stack chips, and links.
+- Space Grotesk 500/600 for headings (hero up to 5.25rem).
+- Inter for body.
+- JetBrains Mono for numbers, labels, chips and charts (tabular-nums, ligatures off in code).
 
 ## Motion
-- Reveals use IntersectionObserver: 12px rise over 400ms, staggered 60ms.
-- The active section's nav link is highlighted.
-- Cards lift 2px on hover.
-- `prefers-reduced-motion` turns all motion off.
-- Content is visible with JS off: elements are hidden only under `html.js`.
+- Exhibits rise 12px as they reveal.
+- The calibration curve draws, then the dots appear in order.
+- Bars grow from zero, and leakage bars grow from the zero axis.
+- All of this happens only under `html.js` and `prefers-reduced-motion: no-preference`.
 
-## Avoid
-Glow orbs, gradient heroes, skill bars, carousels, scroll-jacking, and unscoped numbers.
+## Rules
+- Mockups say "Mockup", and captures carry their date.
+- Red appears only for a real negative number or a stated limit.
+- No glow, gradients, carousels or scroll-jacking.
+- Every exhibit must work at 360px.
