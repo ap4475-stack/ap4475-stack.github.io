@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aviv Pinto: the story of one number</title>
+  <meta name="description" content="Aviv Pinto, Columbia Mathematics and Statistics. One fill probability from lobkit, told from a resting order to its stated limit.">
+  <meta name="theme-color" content="#0b0e11">
+  <script>
+    (function () {
+      var d = document.documentElement, rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!rm) { d.classList.add('scrub'); window.__failsafe = setTimeout(function () { if (!window.__scrollyOk) d.classList.remove('scrub'); }, 3000); }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#story">Skip to the story</a>
+
+  <header class="nav">
+    <a class="brand" href="#top">aviv pinto</a>
+    <nav aria-label="Sections">
+      <a href="#story">Story</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="intro">
+      <p class="label">Columbia University · Mathematics &amp; Statistics · Class of 2028</p>
+      <h1>The story of one number.</h1>
+      <p class="lede">I'm Aviv Pinto. I build models of markets and the tools that check them, and I show where they break. This is one number from lobkit, my Kalshi order-book simulator: the chance that a resting order fills. Seeking quant trading and research internships for Summer 2027.</p>
+      <p class="cue"><a href="#ch1">Scroll to follow the number <span aria-hidden="true">↓</span></a></p>
+    </section>
+
+    <section class="scrolly" id="story" aria-label="lobkit, in five chapters">
+      <div class="stage" aria-hidden="true">
+        <div class="stage-in">
+          <div class="tilt"><svg id="stage" class="scene" viewBox="0 0 440 500"></svg></div>
+        </div>
+      </div>
+
+      <nav class="rail" aria-label="Chapters">
+        <ol>
+          <li><a href="#ch1"><span>01</span> Order</a></li>
+          <li><a href="#ch2"><span>02</span> Fill</a></li>
+          <li><a href="#ch3"><span>03</span> Calibration</a></li>
+          <li><a href="#ch4"><span>04</span> Control</a></li>
+          <li><a href="#ch5"><span>05</span> Limit</a></li>
+        </ol>
+      </nav>
+
+      <div class="steps">
+        <article class="step" id="ch1">
+          <div class="card">
+            <p class="label">01 · lobkit</p>
+            <h2>A resting order.</h2>
+            <p>lobkit rebuilds Kalshi limit-order books from L2 data. Start with one order: size 10, joining the back of an existing price level. Everyone already in line trades first.</p>
+            <p class="fine">The book on the stage is illustrative. The setup matches lobkit's test: size 10, back of the level, 60 second horizon.</p>
+            <figure class="static"><!-- static:1 -->
+<svg class="scene" viewBox="0 0 440 500" role="img" aria-label="Illustrative order book. My order, size 10, sits at the back of the 48 cent bid behind 90 contracts."><defs><pattern id="hatch-s1" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="h-bg"/><line x1="0" y1="0" x2="0" y2="7" class="h-ln"/></pattern><pattern id="hatchR-s1" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" class="hr-bg"/><line x1="0" y1="0" x2="0" y2="6" class="hr-ln"/></pattern></defs><rect class="frame" x="0.5" y="0.5" width="439" height="499" rx="10"/><line class="rule" x1="16" x2="424" y1="52" y2="52"/><text class="hud-k" x="16" y="22">01 / 05</text><text class="hud-t" x="16" y="40">A resting order</text><text class="hud-k" x="424" y="22" text-anchor="end">resting at</text><text class="hud-v" x="424" y="42" text-anchor="end">48¢ bid, back of queue</text><text class="src" x="16" y="488">ILLUSTRATIVE BOOK · sizes made up</text><g class="ladder"><text class="lad-h" x="214" y="62" text-anchor="middle" opacity="1">price</text><text class="lad-h" x="184" y="62" text-anchor="end" opacity="1">bids</text><text class="lad-h" x="244" y="62" opacity="1">asks</text><text class="px" x="214" y="86.5" text-anchor="middle" opacity="1">54¢</text><g class="b ask" opacity="1"><path class="side" d="M304,74l7,-7v16l-7,7z"/><path class="top" d="M238,74l7,-7h66l-7,7z"/><rect class="face" x="238" y="74" width="66" height="16"/></g><text class="px" x="214" y="110.5" text-anchor="middle" opacity="1">53¢</text><g class="b ask" opacity="1"><path class="side" d="M331.5,98l7,-7v16l-7,7z"/><path class="top" d="M238,98l7,-7h93.5l-7,7z"/><rect class="face" x="238" y="98" width="93.5" height="16"/></g><text class="px" x="214" y="134.5" text-anchor="middle" opacity="1">52¢</text><g class="b ask" opacity="1"><path class="side" d="M282,122l7,-7v16l-7,7z"/><path class="top" d="M238,122l7,-7h44l-7,7z"/><rect class="face" x="238" y="122" width="44" height="16"/></g><text class="px" x="214" y="158.5" text-anchor="middle" opacity="1">51¢</text><g class="b ask" opacity="1"><path class="side" d="M315,146l7,-7v16l-7,7z"/><path class="top" d="M238,146l7,-7h77l-7,7z"/><rect class="face" x="238" y="146" width="77" height="16"/></g><text class="px" x="214" y="182.5" text-anchor="middle" opacity="1">50¢</text><g class="b ask" opacity="1"><path class="side" d="M298.5,170l7,-7v16l-7,7z"/><path class="top" d="M238,170l7,-7h60.5l-7,7z"/><rect class="face" x="238" y="170" width="60.5" height="16"/></g><text class="px" x="214" y="206.5" text-anchor="middle" opacity="1">49¢</text><g class="b ask" opacity="1"><path class="side" d="M276.5,194l7,-7v16l-7,7z"/><path class="top" d="M238,194l7,-7h38.5l-7,7z"/><rect class="face" x="238" y="194" width="38.5" height="16"/></g><text class="px best" x="214" y="240.5" text-anchor="middle" opacity="1">48¢</text><text class="px" x="214" y="264.5" text-anchor="middle" opacity="1">47¢</text><g class="b bid" opacity="1"><path class="side" d="M190,252l7,-7v16l-7,7z"/><path class="top" d="M107.5,252l7,-7h82.5l-7,7z"/><rect class="face" x="107.5" y="252" width="82.5" height="16"/></g><text class="px" x="214" y="288.5" text-anchor="middle" opacity="1">46¢</text><g class="b bid" opacity="1"><path class="side" d="M190,276l7,-7v16l-7,7z"/><path class="top" d="M135,276l7,-7h55l-7,7z"/><rect class="face" x="135" y="276" width="55" height="16"/></g><text class="px" x="214" y="312.5" text-anchor="middle" opacity="1">45¢</text><g class="b bid" opacity="1"><path class="side" d="M190,300l7,-7v16l-7,7z"/><path class="top" d="M91,300l7,-7h99l-7,7z"/><rect class="face" x="91" y="300" width="99" height="16"/></g><text class="px" x="214" y="336.5" text-anchor="middle" opacity="1">44¢</text><g class="b bid" opacity="1"><path class="side" d="M190,324l7,-7v16l-7,7z"/><path class="top" d="M140.5,324l7,-7h49.5l-7,7z"/><rect class="face" x="140.5" y="324" width="49.5" height="16"/></g><text class="px" x="214" y="360.5" text-anchor="middle" opacity="1">43¢</text><g class="b bid" opacity="1"><path class="side" d="M190,348l7,-7v16l-7,7z"/><path class="top" d="M118.5,348l7,-7h71.5l-7,7z"/><rect class="face" x="118.5" y="348" width="71.5" height="16"/></g><g class="b bid q" opacity="1"><path class="side" d="M190,228l7,-7v16l-7,7z"/><path class="top" d="M157,228l7,-7h33l-7,7z"/><rect class="face" x="157" y="228" width="33" height="16"/></g><g class="b bid q" opacity="1"><path class="side" d="M155.5,228l7,-7v16l-7,7z"/><path class="top" d="M139,228l7,-7h16.5l-7,7z"/><rect class="face" x="139" y="228" width="16.5" height="16"/></g><g class="b bid q" opacity="1"><path class="side" d="M137.5,228l7,-7v16l-7,7z"/><path class="top" d="M110,228l7,-7h27.5l-7,7z"/><rect class="face" x="110" y="228" width="27.5" height="16"/></g><g class="b bid q" opacity="1"><path class="side" d="M108.5,228l7,-7v16l-7,7z"/><path class="top" d="M86.5,228l7,-7h22l-7,7z"/><rect class="face" x="86.5" y="228" width="22" height="16"/></g><g class="b mine" opacity="1"><path class="side" d="M85,228l7,-7v16l-7,7z"/><path class="top" d="M74,228l7,-7h11l-7,7z"/><rect class="face" x="74" y="228" width="11" height="16"/></g><path class="you" d="M74.5,212h10l-5,6z" opacity="1"/></g><text class="tag" x="240" y="240.5" opacity="1">← best bid, my level</text><g opacity="1"><text class="lab" x="64" y="408">horizon</text><text class="val" x="64" y="430">0 s / 60 s</text><text class="lab" x="214" y="408">queue ahead of me</text><text class="val" x="214" y="430">90 contracts</text><rect class="trk" x="64" y="442" width="300" height="3"/><rect class="trk-on" x="64" y="442" width="0" height="3"/><rect class="sw" x="64" y="454" width="12" height="10"/><text class="lab" x="82" y="463">my order: size 10, back of the 48¢ bid</text></g></svg>
+<!-- /static:1 --></figure>
+          </div>
+        </article>
+
+        <article class="step" id="ch2">
+          <div class="card">
+            <p class="label">02 · lobkit</p>
+            <h2>Will it fill?</h2>
+            <p>Trades eat the queue from the front. The question is whether enough volume arrives within 60 seconds to reach my order. lobkit answers with a probability, not a yes or no.</p>
+            <p class="fine">Illustrative drain. The readout steps through the model's real bin centers, from 0.014 to 0.449.</p>
+            <figure class="static"><!-- static:2 -->
+<svg class="scene" viewBox="0 0 440 500" role="img" aria-label="Illustrative queue drain. The queue ahead empties over the 60 second horizon and the readout reaches 0.449."><defs><pattern id="hatch-s2" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="h-bg"/><line x1="0" y1="0" x2="0" y2="7" class="h-ln"/></pattern><pattern id="hatchR-s2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" class="hr-bg"/><line x1="0" y1="0" x2="0" y2="6" class="hr-ln"/></pattern></defs><rect class="frame" x="0.5" y="0.5" width="439" height="499" rx="10"/><line class="rule" x1="16" x2="424" y1="52" y2="52"/><text class="hud-k" x="16" y="22">02 / 05</text><text class="hud-t" x="16" y="40">Will it fill?</text><text class="hud-k" x="424" y="22" text-anchor="end">P(fill within 60 s)</text><text class="hud-v" x="424" y="42" text-anchor="end">0.449</text><text class="src" x="16" y="488">ILLUSTRATIVE BOOK · sizes made up</text><g class="ladder"><text class="lad-h" x="214" y="62" text-anchor="middle" opacity="1">price</text><text class="lad-h" x="184" y="62" text-anchor="end" opacity="1">bids</text><text class="lad-h" x="244" y="62" opacity="1">asks</text><text class="px" x="214" y="86.5" text-anchor="middle" opacity="1">54¢</text><g class="b ask" opacity="1"><path class="side" d="M304,74l7,-7v16l-7,7z"/><path class="top" d="M238,74l7,-7h66l-7,7z"/><rect class="face" x="238" y="74" width="66" height="16"/></g><text class="px" x="214" y="110.5" text-anchor="middle" opacity="1">53¢</text><g class="b ask" opacity="1"><path class="side" d="M331.5,98l7,-7v16l-7,7z"/><path class="top" d="M238,98l7,-7h93.5l-7,7z"/><rect class="face" x="238" y="98" width="93.5" height="16"/></g><text class="px" x="214" y="134.5" text-anchor="middle" opacity="1">52¢</text><g class="b ask" opacity="1"><path class="side" d="M282,122l7,-7v16l-7,7z"/><path class="top" d="M238,122l7,-7h44l-7,7z"/><rect class="face" x="238" y="122" width="44" height="16"/></g><text class="px" x="214" y="158.5" text-anchor="middle" opacity="1">51¢</text><g class="b ask" opacity="1"><path class="side" d="M315,146l7,-7v16l-7,7z"/><path class="top" d="M238,146l7,-7h77l-7,7z"/><rect class="face" x="238" y="146" width="77" height="16"/></g><text class="px" x="214" y="182.5" text-anchor="middle" opacity="1">50¢</text><g class="b ask" opacity="1"><path class="side" d="M298.5,170l7,-7v16l-7,7z"/><path class="top" d="M238,170l7,-7h60.5l-7,7z"/><rect class="face" x="238" y="170" width="60.5" height="16"/></g><text class="px" x="214" y="206.5" text-anchor="middle" opacity="1">49¢</text><g class="b ask" opacity="1"><path class="side" d="M276.5,194l7,-7v16l-7,7z"/><path class="top" d="M238,194l7,-7h38.5l-7,7z"/><rect class="face" x="238" y="194" width="38.5" height="16"/></g><text class="px best" x="214" y="240.5" text-anchor="middle" opacity="1">48¢</text><text class="px" x="214" y="264.5" text-anchor="middle" opacity="1">47¢</text><g class="b bid" opacity="1"><path class="side" d="M190,252l7,-7v16l-7,7z"/><path class="top" d="M107.5,252l7,-7h82.5l-7,7z"/><rect class="face" x="107.5" y="252" width="82.5" height="16"/></g><text class="px" x="214" y="288.5" text-anchor="middle" opacity="1">46¢</text><g class="b bid" opacity="1"><path class="side" d="M190,276l7,-7v16l-7,7z"/><path class="top" d="M135,276l7,-7h55l-7,7z"/><rect class="face" x="135" y="276" width="55" height="16"/></g><text class="px" x="214" y="312.5" text-anchor="middle" opacity="1">45¢</text><g class="b bid" opacity="1"><path class="side" d="M190,300l7,-7v16l-7,7z"/><path class="top" d="M91,300l7,-7h99l-7,7z"/><rect class="face" x="91" y="300" width="99" height="16"/></g><text class="px" x="214" y="336.5" text-anchor="middle" opacity="1">44¢</text><g class="b bid" opacity="1"><path class="side" d="M190,324l7,-7v16l-7,7z"/><path class="top" d="M140.5,324l7,-7h49.5l-7,7z"/><rect class="face" x="140.5" y="324" width="49.5" height="16"/></g><text class="px" x="214" y="360.5" text-anchor="middle" opacity="1">43¢</text><g class="b bid" opacity="1"><path class="side" d="M190,348l7,-7v16l-7,7z"/><path class="top" d="M118.5,348l7,-7h71.5l-7,7z"/><rect class="face" x="118.5" y="348" width="71.5" height="16"/></g><g class="b bid q" opacity="1"><path class="side" d="M190,228l7,-7v16l-7,7z"/><path class="top" d="M175.2,228l7,-7h14.9l-7,7z"/><rect class="face" x="175.2" y="228" width="14.9" height="16"/></g><g class="b mine" opacity="1"><path class="side" d="M173.7,228l7,-7v16l-7,7z"/><path class="top" d="M162.7,228l7,-7h11l-7,7z"/><rect class="face" x="162.7" y="228" width="11" height="16"/></g><path class="you" d="M163.2,212h10l-5,6z" opacity="1"/></g><text class="tag" x="240" y="240.5" opacity="1">← best bid, my level</text><g opacity="1"><text class="lab" x="64" y="408">horizon</text><text class="val" x="64" y="430">60 s / 60 s</text><text class="lab" x="214" y="408">queue ahead of me</text><text class="val" x="214" y="430">14 contracts</text><rect class="trk" x="64" y="442" width="300" height="3"/><rect class="trk-on" x="64" y="442" width="300" height="3"/><rect class="sw" x="64" y="454" width="12" height="10"/><text class="lab" x="82" y="463">my order: size 10, back of the 48¢ bid</text></g></svg>
+<!-- /static:2 --></figure>
+          </div>
+        </article>
+
+        <article class="step" id="ch3">
+          <div class="card">
+            <p class="label">03 · real data, 2026-09-02</p>
+            <h2>Predicted vs. observed.</h2>
+            <p>A probability is only worth something if it is calibrated. lobkit placed 9,995 hypothetical orders across 209 markets and checked every prediction against what happened. A perfect model sits on the dashed line.</p>
+            <dl class="spec">
+              <div><dt>Brier</dt><dd><b>0.0502</b> vs 0.0539 base rate, skill +0.069</dd></div>
+              <div><dt>AUC</dt><dd><b>0.67 to 0.70</b> on a held-out half</dd></div>
+              <div><dt>Worst gap</dt><dd><b>0.078</b> in bins with n ≥ 25</dd></div>
+            </dl>
+            <figure class="static"><!-- static:3 -->
+<svg class="scene" viewBox="0 0 440 500" role="img" aria-label="lobkit calibration, real data: seven bins of predicted versus observed fill rate around the y = x line. Brier 0.0502 vs 0.0539 base."><defs><pattern id="hatch-s3" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="h-bg"/><line x1="0" y1="0" x2="0" y2="7" class="h-ln"/></pattern><pattern id="hatchR-s3" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" class="hr-bg"/><line x1="0" y1="0" x2="0" y2="6" class="hr-ln"/></pattern></defs><rect class="frame" x="0.5" y="0.5" width="439" height="499" rx="10"/><line class="rule" x1="16" x2="424" y1="52" y2="52"/><text class="hud-k" x="16" y="22">03 / 05</text><text class="hud-t" x="16" y="40">Predicted vs. observed</text><text class="hud-k" x="424" y="22" text-anchor="end">Brier, 9,995 orders</text><text class="hud-v" x="424" y="42" text-anchor="end">0.0502 vs 0.0539</text><text class="src" x="16" y="488">REAL DATA · lobkit, snapshot 2026-09-02</text><g class="axes" opacity="1"><line class="grid" x1="64" x2="364" y1="356" y2="356"/><line class="grid" y1="356" y2="56" x1="64" x2="64"/><text class="tick" x="64" y="373" text-anchor="middle">0.0</text><text class="tick" x="56" y="360" text-anchor="end">0.0</text><line class="grid" x1="64" x2="364" y1="281" y2="281"/><line class="grid" y1="356" y2="56" x1="139" x2="139"/><text class="tick" x="139" y="373" text-anchor="middle">0.2</text><text class="tick" x="56" y="285" text-anchor="end">0.2</text><line class="grid" x1="64" x2="364" y1="206" y2="206"/><line class="grid" y1="356" y2="56" x1="214" x2="214"/><text class="tick" x="214" y="373" text-anchor="middle">0.4</text><text class="tick" x="56" y="210" text-anchor="end">0.4</text><line class="grid" x1="64" x2="364" y1="131" y2="131"/><line class="grid" y1="356" y2="56" x1="289" x2="289"/><text class="tick" x="289" y="373" text-anchor="middle">0.6</text><text class="tick" x="56" y="135" text-anchor="end">0.6</text><line class="grid" x1="64" x2="364" y1="56" y2="56"/><line class="grid" y1="356" y2="56" x1="364" x2="364"/><text class="tick" x="364" y="373" text-anchor="middle">0.8</text><text class="tick" x="56" y="60" text-anchor="end">0.8</text><text class="axis" x="214" y="390" text-anchor="middle">predicted fill probability</text><text class="axis" x="16" y="206" text-anchor="middle" transform="rotate(-90 16 206)">observed</text></g><line class="diag" x1="64" y1="356" x2="364" y2="56"/><text class="note" x="278" y="168.5" opacity="1">y = x</text><path class="curve" d="M69.3,339.5 L117.6,273.1 L153.3,248.8 L193.7,219.5 L232.4,162.9 L301.8,131 L346,85.3" opacity="1"/><circle class="pt" cx="69.3" cy="339.5" r="9.8" opacity="1"/><circle class="pt" cx="117.6" cy="273.1" r="7.1" opacity="1"/><circle class="pt" cx="153.3" cy="248.8" r="6.5" opacity="1"/><circle class="pt" cx="193.7" cy="219.5" r="5.9" opacity="1"/><circle class="pt" cx="232.4" cy="162.9" r="5.7" opacity="1"/><circle class="pt" cx="301.8" cy="131" r="5.1" opacity="1"/><circle class="pt" cx="346" cy="85.3" r="5.3" opacity="1"/><text class="note" x="85.3" y="327.5" opacity="1">n = 9,518</text><text class="note dim" x="72" y="72" opacity="1">dot size grows with orders per bin</text><g opacity="1"><text class="lab" x="64" y="408">AUC, held-out half</text><text class="val" x="64" y="430">0.67 to 0.70</text><text class="lab" x="214" y="408">worst gap, n ≥ 25</text><text class="val" x="214" y="430">0.078</text><text class="lab" x="64" y="458">5 of 7 bins sit above y = x: under-predicts</text></g></svg>
+<!-- /static:3 --></figure>
+          </div>
+        </article>
+
+        <article class="step" id="ch4">
+          <div class="card">
+            <p class="label">04 · leakage control</p>
+            <h2>The control.</h2>
+            <p>Then I tried to break it. Pair each prediction with another level's outcome. If the pipeline leaked future data, the skill would survive the shuffle. It does not.</p>
+            <dl class="spec">
+              <div><dt>Skill</dt><dd><b class="pos-c">+0.069</b> real, <b class="neg-c">−0.122</b> shuffled</dd></div>
+              <div><dt>Brier</dt><dd>0.0502 real, 0.0604 shuffled</dd></div>
+              <div><dt>0.6+ bins</dt><dd>observed 0.695 real, 0.055 shuffled</dd></div>
+            </dl>
+            <p class="fine">Prediction reads the tape before the cursor and resolution reads after it, so leakage is impossible by construction.</p>
+            <figure class="static"><!-- static:4 -->
+<svg class="scene" viewBox="0 0 440 500" role="img" aria-label="Shuffled-outcome control: points fall toward the base rate and Brier skill flips from +0.069 to -0.122."><defs><pattern id="hatch-s4" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="h-bg"/><line x1="0" y1="0" x2="0" y2="7" class="h-ln"/></pattern><pattern id="hatchR-s4" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" class="hr-bg"/><line x1="0" y1="0" x2="0" y2="6" class="hr-ln"/></pattern></defs><rect class="frame" x="0.5" y="0.5" width="439" height="499" rx="10"/><line class="rule" x1="16" x2="424" y1="52" y2="52"/><text class="hud-k" x="16" y="22">04 / 05</text><text class="hud-t" x="16" y="40">The control</text><text class="hud-k" x="424" y="22" text-anchor="end">skill, shuffled</text><text class="hud-v neg-t" x="424" y="42" text-anchor="end">−0.122</text><text class="src" x="16" y="488">REAL DATA · lobkit, snapshot 2026-09-02</text><g class="axes" opacity="1"><line class="grid" x1="64" x2="364" y1="356" y2="356"/><line class="grid" y1="356" y2="56" x1="64" x2="64"/><text class="tick" x="64" y="373" text-anchor="middle">0.0</text><text class="tick" x="56" y="360" text-anchor="end">0.0</text><line class="grid" x1="64" x2="364" y1="281" y2="281"/><line class="grid" y1="356" y2="56" x1="139" x2="139"/><text class="tick" x="139" y="373" text-anchor="middle">0.2</text><text class="tick" x="56" y="285" text-anchor="end">0.2</text><line class="grid" x1="64" x2="364" y1="206" y2="206"/><line class="grid" y1="356" y2="56" x1="214" x2="214"/><text class="tick" x="214" y="373" text-anchor="middle">0.4</text><text class="tick" x="56" y="210" text-anchor="end">0.4</text><line class="grid" x1="64" x2="364" y1="131" y2="131"/><line class="grid" y1="356" y2="56" x1="289" x2="289"/><text class="tick" x="289" y="373" text-anchor="middle">0.6</text><text class="tick" x="56" y="135" text-anchor="end">0.6</text><line class="grid" x1="64" x2="364" y1="56" y2="56"/><line class="grid" y1="356" y2="56" x1="364" x2="364"/><text class="tick" x="364" y="373" text-anchor="middle">0.8</text><text class="tick" x="56" y="60" text-anchor="end">0.8</text><text class="axis" x="214" y="390" text-anchor="middle">predicted fill probability</text><text class="axis" x="16" y="206" text-anchor="middle" transform="rotate(-90 16 206)">observed</text></g><line class="diag" x1="64" y1="356" x2="364" y2="56"/><text class="note" x="278" y="168.5" opacity="1">y = x</text><path class="curve shuf" d="M69.3,332.8 L117.6,338 L153.3,329.4 L193.7,336.5 L232.4,331.3 L301.8,335.4 L346,335.4" opacity="1"/><circle class="pt shuf" cx="69.3" cy="332.8" r="9.8" opacity="1"/><circle class="pt shuf" cx="117.6" cy="338" r="7.1" opacity="1"/><circle class="pt shuf" cx="153.3" cy="329.4" r="6.5" opacity="1"/><circle class="pt shuf" cx="193.7" cy="336.5" r="5.9" opacity="1"/><circle class="pt shuf" cx="232.4" cy="331.3" r="5.7" opacity="1"/><circle class="pt shuf" cx="301.8" cy="335.4" r="5.1" opacity="1"/><circle class="pt shuf" cx="346" cy="335.4" r="5.3" opacity="1"/><text class="note dim" x="72" y="72" opacity="1">dot size grows with orders per bin</text><text class="note dim" x="358" y="296" text-anchor="end" opacity="1">shuffled positions illustrative,</text><text class="note dim" x="358" y="311" text-anchor="end" opacity="1">except 0.6+ bins: 0.055 (real)</text><g opacity="1"><text class="lab" x="64" y="408">Brier skill over base rate</text><text class="lab" x="384" y="408" text-anchor="end">shuffled outcomes</text><line class="zero" x1="214" x2="214" y1="416" y2="442"/><rect class="neg" x="101.4" y="420" width="112.6" height="18" rx="2"/><text class="val neg-t" x="93.4" y="434" text-anchor="end">−0.122</text><text class="lab" x="64" y="462">Brier 0.0604 shuffled vs 0.0502 real</text></g></svg>
+<!-- /static:4 --></figure>
+          </div>
+        </article>
+
+        <article class="step" id="ch5">
+          <div class="card limit">
+            <p class="label neg-c">05 · stated limit</p>
+            <h2>The limit.</h2>
+            <p><b>44.6%</b> of orders are ambiguous from L2 data alone. The level emptied, but trades alone did not clear the queue, so whether they filled depends on cancellations nobody can see. The base rate is 5.71% under the lower truth and 50.3% under the upper.</p>
+            <p>lobkit is calibrated against the lower, conservative truth. It is trusted for book reconstruction and cost accounting, and <b>not trusted for point fill estimates</b>. It says so itself.</p>
+            <figure class="static"><!-- static:5 -->
+<svg class="scene" viewBox="0 0 440 500" role="img" aria-label="The limit: 44.6% of 9,995 orders are ambiguous from L2 data alone; base rate 5.71% under the lower truth, 50.3% under the upper."><defs><pattern id="hatch-s5" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="h-bg"/><line x1="0" y1="0" x2="0" y2="7" class="h-ln"/></pattern><pattern id="hatchR-s5" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" class="hr-bg"/><line x1="0" y1="0" x2="0" y2="6" class="hr-ln"/></pattern></defs><rect class="frame" x="0.5" y="0.5" width="439" height="499" rx="10"/><line class="rule" x1="16" x2="424" y1="52" y2="52"/><text class="hud-k" x="16" y="22">05 / 05</text><text class="hud-t" x="16" y="40">The limit</text><text class="hud-k" x="424" y="22" text-anchor="end">point fill estimates</text><text class="hud-v neg-t" x="424" y="42" text-anchor="end">not trusted</text><text class="src" x="16" y="488">REAL DATA · lobkit, snapshot 2026-09-02</text><g class="band" opacity="1"><rect x="64" y="167.4" width="300" height="167.2" fill="url(#hatch-s5)"/><line class="band-l" x1="64" x2="364" y1="167.4" y2="167.4"/><line class="band-l" x1="64" x2="364" y1="334.6" y2="334.6"/><text class="band-t" x="70" y="160.4">upper truth 50.3%</text><text class="band-t" x="358" y="327.6" text-anchor="end">lower truth 5.71%</text></g><g class="axes" opacity="1"><line class="grid" x1="64" x2="364" y1="356" y2="356"/><line class="grid" y1="356" y2="56" x1="64" x2="64"/><text class="tick" x="64" y="373" text-anchor="middle">0.0</text><text class="tick" x="56" y="360" text-anchor="end">0.0</text><line class="grid" x1="64" x2="364" y1="281" y2="281"/><line class="grid" y1="356" y2="56" x1="139" x2="139"/><text class="tick" x="139" y="373" text-anchor="middle">0.2</text><text class="tick" x="56" y="285" text-anchor="end">0.2</text><line class="grid" x1="64" x2="364" y1="206" y2="206"/><line class="grid" y1="356" y2="56" x1="214" x2="214"/><text class="tick" x="214" y="373" text-anchor="middle">0.4</text><text class="tick" x="56" y="210" text-anchor="end">0.4</text><line class="grid" x1="64" x2="364" y1="131" y2="131"/><line class="grid" y1="356" y2="56" x1="289" x2="289"/><text class="tick" x="289" y="373" text-anchor="middle">0.6</text><text class="tick" x="56" y="135" text-anchor="end">0.6</text><line class="grid" x1="64" x2="364" y1="56" y2="56"/><line class="grid" y1="356" y2="56" x1="364" x2="364"/><text class="tick" x="364" y="373" text-anchor="middle">0.8</text><text class="tick" x="56" y="60" text-anchor="end">0.8</text><text class="axis" x="214" y="390" text-anchor="middle">predicted fill probability</text><text class="axis" x="16" y="206" text-anchor="middle" transform="rotate(-90 16 206)">observed</text></g><line class="diag" x1="64" y1="356" x2="364" y2="56"/><text class="note" x="278" y="168.5" opacity="1">y = x</text><path class="curve" d="M69.3,339.5 L117.6,273.1 L153.3,248.8 L193.7,219.5 L232.4,162.9 L301.8,131 L346,85.3" opacity="1"/><circle class="pt" cx="69.3" cy="339.5" r="9.8" opacity="1"/><circle class="pt" cx="117.6" cy="273.1" r="7.1" opacity="1"/><circle class="pt" cx="153.3" cy="248.8" r="6.5" opacity="1"/><circle class="pt" cx="193.7" cy="219.5" r="5.9" opacity="1"/><circle class="pt" cx="232.4" cy="162.9" r="5.7" opacity="1"/><circle class="pt" cx="301.8" cy="131" r="5.1" opacity="1"/><circle class="pt" cx="346" cy="85.3" r="5.3" opacity="1"/><text class="note" x="85.3" y="327.5" opacity="1">n = 9,518</text><g opacity="1"><text class="lab" x="64" y="408">9,995 orders, 209 markets</text><rect class="trk" x="64" y="418" width="300" height="20" rx="2"/><rect class="amb" x="230.2" y="418" width="133.8" height="20" fill="url(#hatchR-s5)"/><rect class="amb-o" x="230.2" y="418" width="133.8" height="20"/><text class="val neg-t" x="364" y="458" text-anchor="end" opacity="1">44.6% ambiguous from L2 alone</text></g></svg>
+<!-- /static:5 --></figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="montage" id="projects">
+      <div class="m-head">
+        <p class="label">Same habit, five more projects</p>
+        <h2>Show the evidence. State the limit.</h2>
+        <p class="muted">lobkit itself: 119 tests, about 14.3k lines of Python. Code private, walkthrough on request.</p>
+      </div>
+      <ul class="cards">
+        <li class="pcard">
+          <p class="meta"><span class="tag live">Live</span> Team of 5 · Next.js, Supabase</p>
+          <h3>CallIt</h3>
+          <p class="metric"><b>300+</b> commits</p>
+          <p>A group prediction app. A private group posts a call, everyone answers once, and the group sees who called it. I was marketing manager and designed the CallIt coin and the UI.</p>
+          <p class="links"><a href="https://call-it.app" rel="noopener">call-it.app ↗</a> <a href="https://app.call-it.app" rel="noopener">open the app ↗</a></p>
+        </li>
+        <li class="pcard">
+          <p class="meta"><span class="tag">AI agent</span> Claude tool use · Next.js 15</p>
+          <h3>Nudge</h3>
+          <p class="metric"><b>60+</b> tests · ~8.3k lines TS</p>
+          <p>Follows up on unpaid invoices over WhatsApp and Gmail. A Claude tool-use loop records promises to pay and disputes, with a human-takeover dashboard.</p>
+          <p class="links muted">Code private</p>
+        </li>
+        <li class="pcard">
+          <p class="meta"><span class="tag">Tool</span> Python · job-board APIs</p>
+          <h3>quant-roles</h3>
+          <p class="metric"><b>144</b> roles · 26 firms</p>
+          <p>Pulls open quant roles from public job-board APIs and checks every link. Figures are from the Aug 28 snapshot.</p>
+          <p class="links muted">Code private</p>
+        </li>
+        <li class="pcard">
+          <p class="meta"><span class="tag">Data</span> Python</p>
+          <h3>Research Agent</h3>
+          <p class="metric"><b>485</b> tests · 42 files</p>
+          <p>A local research workspace that stores evidence and uncertainty before it ranks anything. Unknown is never scored as low.</p>
+          <p class="links muted">Code private</p>
+        </li>
+        <li class="pcard">
+          <p class="meta"><span class="tag">Agents</span> Python · Ollama · SQLite</p>
+          <h3>Orchestra</h3>
+          <p class="metric">depth cap <b>2</b> · ~1.4k lines</p>
+          <p>A frontier model plans, cheap local or cloud models do the work, and a SQLite ledger records every call.</p>
+          <p class="links muted">Code private</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="foot" id="contact">
+    <div>
+      <p class="label">Contact</p>
+      <h2>Get in touch</h2>
+      <p>The fastest way to reach me is <a href="https://github.com/ap4475-stack" rel="noopener">GitHub</a>. Code walkthroughs of the private projects are available on request.</p>
+    </div>
+    <p class="muted small">© 2026 Aviv Pinto · Static HTML · no analytics</p>
+  </footer>
+
+  <script src="scene.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aviv Pinto · Exhibit hall</title>
+  <meta name="description" content="Aviv Pinto, Columbia Mathematics and Statistics. Six projects hung as exhibits in a 3D hall, with a classic page fallback.">
+  <meta name="theme-color" content="#0b0e11">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0e11'/%3E%3Cpath d='M7 25 L25 7' stroke='%2326a69a' stroke-width='2.5' stroke-dasharray='3 3'/%3E%3Ccircle cx='11' cy='19' r='2.6' fill='%23f8fafc'/%3E%3Ccircle cx='20' cy='11' r='2.6' fill='%23f8fafc'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap">
+  <link rel="stylesheet" href="gallery.css">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+
+  <!-- SPLASH: the choice between modes -->
+  <section class="splash" id="splash" aria-labelledby="splash-name">
+    <svg class="splash-diag" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="100" x2="100" y2="0"/></svg>
+    <div class="splash-inner">
+      <p class="label">Columbia University · Mathematics &amp; Statistics · Class of 2028</p>
+      <h1 id="splash-name">Aviv Pinto</h1>
+      <p class="splash-line">Predicted <span class="vs">vs.</span> observed.</p>
+      <p class="lede">I build models of markets and the tools that check them, and I show where they break. Seeking quant trading and research internships for Summer 2027.</p>
+      <div class="choices">
+        <button class="choice primary" id="enter" type="button">
+          <span class="choice-k">01</span>
+          <span class="choice-t">Enter the exhibit hall (3D)</span>
+          <span class="choice-d">Six projects hung along a path. Drag, scroll or use the arrow keys.</span>
+        </button>
+        <a class="choice" href="../../index.html">
+          <span class="choice-k">02</span>
+          <span class="choice-t">Classic page</span>
+          <span class="choice-d">The same work on one readable page.</span>
+        </a>
+      </div>
+      <p class="splash-note" id="splash-note">The hall uses WebGL. Every exhibit in it opens as plain text, and the classic page has the same content.</p>
+      <noscript><p class="splash-note">JavaScript is off, so the 3D hall cannot run. <a href="../../index.html">Open the classic page</a>.</p></noscript>
+    </div>
+  </section>
+
+  <!-- HALL: canvas plus an HTML control layer -->
+  <section class="hall" id="hall" hidden aria-label="Exhibit hall">
+    <div class="stage" id="stage" tabindex="0" role="application"
+         aria-roledescription="3D exhibit hall"
+         aria-label="Exhibit hall. Left and right arrow keys move between exhibits. Enter opens the current exhibit.">
+      <canvas id="gl" aria-hidden="true"></canvas>
+    </div>
+
+    <header class="hud-top">
+      <button class="hud-brand" id="back" type="button" aria-label="Back to the start screen">aviv pinto <span>/ exhibit hall</span></button>
+      <a class="hud-link" href="../../index.html">Classic page</a>
+    </header>
+
+    <div class="hud-now">
+      <p class="label" id="now-label">Exhibit A</p>
+      <p class="now-name" id="now-name">lobkit</p>
+      <button class="btn-open" id="open" type="button">Open exhibit <span aria-hidden="true">↗</span></button>
+    </div>
+
+    <nav class="hud-map" aria-label="Exhibits A to F">
+      <button class="step" id="prev" type="button" aria-label="Previous exhibit">←</button>
+      <ol class="map" id="map">
+        <li class="map-track" aria-hidden="true"><i id="map-fill"></i></li>
+      </ol>
+      <button class="step" id="next" type="button" aria-label="Next exhibit">→</button>
+    </nav>
+    <p class="hud-hint" id="hint">Drag, scroll or use ← → · Enter opens</p>
+    <p class="sr-only" aria-live="polite" id="live"></p>
+
+    <div class="loading" id="loading" role="status">Hanging the exhibits…</div>
+    <div class="fallback" id="fallback" hidden role="alert">
+      <p class="label">3D unavailable</p>
+      <p>This browser could not start WebGL, so the hall cannot render.</p>
+      <p><a href="../../index.html">Open the classic page</a> for the same six projects.</p>
+    </div>
+  </section>
+
+  <dialog class="ex-dialog" id="dialog" aria-labelledby="dialog-title">
+    <div class="dlg-bar">
+      <span class="label" id="dialog-idx">Exhibit A</span>
+      <button class="dlg-close" id="dialog-close" type="button" aria-label="Close exhibit">Close <span aria-hidden="true">✕</span></button>
+    </div>
+    <div class="dlg-body" id="dialog-body"></div>
+    <div class="dlg-nav">
+      <button type="button" id="dialog-prev">← Previous</button>
+      <button type="button" id="dialog-next">Next →</button>
+    </div>
+  </dialog>
+
+  <!-- EXHIBITS: the accessible source of truth. Copy matches ../../index.html. -->
+  <div id="exhibits" hidden>
+
+    <article data-ex="A" data-title="lobkit">
+      <div class="meta"><span class="idx">A</span><span class="tag">Research</span><span>Market microstructure · 2026</span></div>
+      <h2 class="ex-title">lobkit</h2>
+      <p class="one">Rebuilds Kalshi limit-order books from L2 data, models the chance that a resting order fills, and reports how far to trust each answer. Every number carries a tag: observed, derived, estimated or assumed.</p>
+      <dl class="spec">
+        <div><dt>Brier</dt><dd><strong>0.0502</strong> vs 0.0539 base rate</dd></div>
+        <div><dt>AUC</dt><dd><strong>0.67–0.70</strong> on a held-out half</dd></div>
+        <div><dt>Worst gap</dt><dd><strong>0.078</strong> in bins with n ≥ 25</dd></div>
+      </dl>
+      <figure class="fig">
+        <!-- chart:calibration -->
+<svg class="chart calib" viewBox="0 0 420 420" role="img" aria-labelledby="g-calib-t g-calib-d">
+<title id="g-calib-t">lobkit fill calibration</title>
+<desc id="g-calib-d">Predicted versus observed fill rate in seven bins. Five of seven bins sit above the diagonal, so the model under-predicts fills; the worst gap among bins with at least 25 orders is 0.078.</desc>
+<line class="grid" x1="44.0" y1="376.0" x2="408.0" y2="376.0"/>
+<line class="grid" x1="44.0" y1="376.0" x2="44.0" y2="12.0"/>
+<text class="tick" x="44.0" y="394.0" text-anchor="middle">0.0</text>
+<text class="tick" x="36.0" y="380.0" text-anchor="end">0.0</text>
+<line class="grid" x1="44.0" y1="285.0" x2="408.0" y2="285.0"/>
+<line class="grid" x1="135.0" y1="376.0" x2="135.0" y2="12.0"/>
+<text class="tick" x="135.0" y="394.0" text-anchor="middle">0.2</text>
+<text class="tick" x="36.0" y="289.0" text-anchor="end">0.2</text>
+<line class="grid" x1="44.0" y1="194.0" x2="408.0" y2="194.0"/>
+<line class="grid" x1="226.0" y1="376.0" x2="226.0" y2="12.0"/>
+<text class="tick" x="226.0" y="394.0" text-anchor="middle">0.4</text>
+<text class="tick" x="36.0" y="198.0" text-anchor="end">0.4</text>
+<line class="grid" x1="44.0" y1="103.0" x2="408.0" y2="103.0"/>
+<line class="grid" x1="317.0" y1="376.0" x2="317.0" y2="12.0"/>
+<text class="tick" x="317.0" y="394.0" text-anchor="middle">0.6</text>
+<text class="tick" x="36.0" y="107.0" text-anchor="end">0.6</text>
+<line class="grid" x1="44.0" y1="12.0" x2="408.0" y2="12.0"/>
+<line class="grid" x1="408.0" y1="376.0" x2="408.0" y2="12.0"/>
+<text class="tick" x="408.0" y="394.0" text-anchor="middle">0.8</text>
+<text class="tick" x="36.0" y="16.0" text-anchor="end">0.8</text>
+<line class="diag" x1="44.0" y1="376.0" x2="408.0" y2="12.0"/>
+<path class="curve" d="M50.4,356.0 L109.1,275.4 L152.3,245.9 L201.4,210.4 L248.3,141.7 L332.5,103.0 L386.2,47.5" pathLength="1"/>
+<circle class="pt" style="--i:0" cx="50.4" cy="356.0" r="9.4"><title>predicted 0.014, observed 0.044, n = 9,518</title></circle>
+<circle class="pt" style="--i:1" cx="109.1" cy="275.4" r="6.8"><title>predicted 0.143, observed 0.221, n = 231</title></circle>
+<circle class="pt" style="--i:2" cx="152.3" cy="245.9" r="6.2"><title>predicted 0.238, observed 0.286, n = 98</title></circle>
+<circle class="pt" style="--i:3" cx="201.4" cy="210.4" r="5.6"><title>predicted 0.346, observed 0.364, n = 44</title></circle>
+<circle class="pt" style="--i:4" cx="248.3" cy="141.7" r="5.4"><title>predicted 0.449, observed 0.515, n = 33</title></circle>
+<circle class="pt" style="--i:5" cx="332.5" cy="103.0" r="4.9"><title>predicted 0.634, observed 0.600, n = 15</title></circle>
+<circle class="pt" style="--i:6" cx="386.2" cy="47.5" r="5.0"><title>predicted 0.752, observed 0.722, n = 18</title></circle>
+<text class="axis" x="226.0" y="414" text-anchor="middle">predicted fill probability</text>
+<text class="axis" transform="translate(12 194.0) rotate(-90)" text-anchor="middle">observed</text>
+<text class="note" x="253.3" y="212.2">y = x</text>
+<text class="note" x="74.4" y="334.0">n = 9,518: under-predicts at the low end</text>
+</svg>
+<!-- /chart:calibration -->
+        <figcaption><span class="label">Real data, snapshot 2026-09-02</span>Fill calibration from lobkit: 9,995 simulated orders across 209 Kalshi markets. Dot size grows with orders per bin. A perfect model sits on the dashed line.</figcaption>
+      </figure>
+      <div class="control" role="img" aria-label="Brier skill: plus 0.069 on real outcomes, minus 0.122 when outcomes are shuffled across levels">
+        <p class="label">Leakage control</p>
+        <div class="ctl-row"><span>real outcomes</span><div class="ctl-track"><i class="ctl-bar pos" style="--w:28.3%"></i></div><b>+0.069</b></div>
+        <div class="ctl-row"><span>shuffled outcomes</span><div class="ctl-track"><i class="ctl-bar neg" style="--w:50%"></i></div><b>−0.122</b></div>
+        <p class="ctl-note">Brier skill over the base rate. Pair each prediction with another level's outcome and the signal collapses, as it must in a leak-free pipeline.</p>
+      </div>
+      <div class="limit">
+        <p class="label">Stated limit</p>
+        <p><strong>44.6%</strong> of orders are ambiguous from L2 data alone. Whether they filled depends on where unseen cancellations sat, and no model closes that gap. Calibration is scored against the conservative lower-bound truth, so the simulator is not trusted for point fill estimates.</p>
+      </div>
+      <ul class="chips"><li>Python</li><li>calibration</li><li>Gamma-Poisson shrinkage</li><li>119 tests</li></ul>
+      <p class="links"><span class="muted">Code private · walkthrough on request</span></p>
+    </article>
+
+    <article data-ex="B" data-title="CallIt">
+      <div class="meta"><span class="idx">B</span><span class="tag live">Live</span><span class="tag">Team of 5</span><span>2026</span></div>
+      <h2 class="ex-title">CallIt</h2>
+      <p class="one">A group prediction app. A private group posts a call, everyone answers once, and the group sees who called it.</p>
+      <p class="role"><span class="label">My role</span>Marketing manager. I designed the CallIt coin and the UI of the game flow with our developer.</p>
+      <figure class="phone-fig">
+        <img src="../../assets/img/callit-live.jpg" width="560" height="1120" loading="lazy" alt="The CallIt landing page on a phone: headline 'We remember who called the vote.' with a 'Priya called Yes' chip and a 'Closes 6:45 PM' chip.">
+        <figcaption class="cap">call-it.app, captured Oct 20, 2026</figcaption>
+      </figure>
+      <ul class="chips"><li>Next.js</li><li>Supabase</li><li>product design</li><li>300+ commits</li></ul>
+      <p class="links"><a href="https://call-it.app" rel="noopener">call-it.app ↗</a><a href="https://app.call-it.app" rel="noopener">open the app ↗</a></p>
+    </article>
+
+    <article data-ex="C" data-title="Nudge">
+      <div class="meta"><span class="idx">C</span><span class="tag">AI agent</span><span>2026</span></div>
+      <h2 class="ex-title">Nudge</h2>
+      <p class="one">An AI receivables agent for small businesses. It chases unpaid invoices over WhatsApp and Gmail, reads the replies with a Claude tool-use loop, and hands off to a person when the conversation needs one.</p>
+      <dl class="spec">
+        <div><dt>Tests</dt><dd><strong>60+</strong> · ~8.3k lines TypeScript</dd></div>
+        <div><dt>Safety</dt><dd>Row-level security on every table; signed webhooks</dd></div>
+      </dl>
+      <ol class="cadence" aria-label="Reminder cadence">
+        <li><b>−3d</b>heads-up</li><li><b>0</b>due</li><li><b>+3</b></li><li><b>+7</b></li><li><b>+14</b></li><li><b>+30</b></li><li class="esc"><b>→</b>human</li>
+      </ol>
+      <div class="chat" aria-label="Mockup of a conversation">
+        <p class="msg them">Hi, can I pay invoice 1042 on Friday?</p>
+        <p class="tool"><code>record_promise_to_pay</code> date: Friday · reminders paused</p>
+        <p class="msg us">Thanks, Friday works. I've paused reminders until then.</p>
+        <p class="msg them">Actually the amount looks wrong.</p>
+        <p class="tool"><code>flag_dispute</code> → <code>escalate_to_human</code></p>
+      </div>
+      <p class="cap">Mockup. The tool names and cadence steps come from the codebase.</p>
+      <ul class="chips"><li>Claude tool use</li><li>Next.js 15</li><li>Postgres RLS</li><li>WhatsApp API</li></ul>
+      <p class="links"><span class="muted">Code private</span></p>
+    </article>
+
+    <article data-ex="D" data-title="quant-roles">
+      <div class="meta"><span class="idx">D</span><span class="tag">Tool</span><span>2026</span></div>
+      <h2 class="ex-title">quant-roles</h2>
+      <p class="one">Pulls quant roles from public job-board APIs into one list and checks each link before it ships. A full rerun is free and takes about four minutes.</p>
+      <dl class="spec">
+        <div><dt>Snapshot</dt><dd><strong>144</strong> roles across 26 firms, Aug 28</dd></div>
+      </dl>
+      <figure class="fig">
+        <p class="label">Roles per firm, top 9 of 26 (tie at 5)</p>
+        <!-- chart:firms -->
+<svg class="chart bars" viewBox="0 0 420 278" role="img" aria-labelledby="g-firms-t">
+<title id="g-firms-t">Roles per firm, top 9 of 26 including a tie, Aug 28 snapshot</title>
+<text class="tick" x="122" y="21" text-anchor="end">Jump Trading</text>
+<rect class="bar" style="--i:0" x="132" y="9" width="248.0" height="16" rx="3"/>
+<text class="val" x="388.0" y="21">29</text>
+<text class="tick" x="122" y="51" text-anchor="end">IMC Trading</text>
+<rect class="bar" style="--i:1" x="132" y="39" width="153.9" height="16" rx="3"/>
+<text class="val" x="293.9" y="51">18</text>
+<text class="tick" x="122" y="81" text-anchor="end">Point72</text>
+<rect class="bar" style="--i:2" x="132" y="69" width="102.6" height="16" rx="3"/>
+<text class="val" x="242.6" y="81">12</text>
+<text class="tick" x="122" y="111" text-anchor="end">AQR</text>
+<rect class="bar" style="--i:3" x="132" y="99" width="102.6" height="16" rx="3"/>
+<text class="val" x="242.6" y="111">12</text>
+<text class="tick" x="122" y="141" text-anchor="end">Virtu Financial</text>
+<rect class="bar" style="--i:4" x="132" y="129" width="68.4" height="16" rx="3"/>
+<text class="val" x="208.4" y="141">8</text>
+<text class="tick" x="122" y="171" text-anchor="end">Tower Research</text>
+<rect class="bar" style="--i:5" x="132" y="159" width="68.4" height="16" rx="3"/>
+<text class="val" x="208.4" y="171">8</text>
+<text class="tick" x="122" y="201" text-anchor="end">DV Trading</text>
+<rect class="bar" style="--i:6" x="132" y="189" width="68.4" height="16" rx="3"/>
+<text class="val" x="208.4" y="201">8</text>
+<text class="tick" x="122" y="231" text-anchor="end">Qube RT</text>
+<rect class="bar" style="--i:7" x="132" y="219" width="42.8" height="16" rx="3"/>
+<text class="val" x="182.8" y="231">5</text>
+<text class="tick" x="122" y="261" text-anchor="end">Flow Traders</text>
+<rect class="bar" style="--i:8" x="132" y="249" width="42.8" height="16" rx="3"/>
+<text class="val" x="182.8" y="261">5</text>
+</svg>
+<!-- /chart:firms -->
+      </figure>
+      <ul class="chips"><li>Python</li><li>Greenhouse, Lever + 3 ATS APIs</li><li>link checking</li></ul>
+      <p class="links"><span class="muted">Code private</span></p>
+    </article>
+
+    <article data-ex="E" data-title="Orchestra">
+      <div class="meta"><span class="idx">E</span><span class="tag">Agents</span><span>2026</span></div>
+      <h2 class="ex-title">Orchestra</h2>
+      <p class="one">A cost-aware multi-agent runner. Expensive tokens plan, cheap tokens type. Every model call is one row in a SQLite ledger.</p>
+      <dl class="spec">
+        <div><dt>Depth cap</dt><dd><strong>2</strong>: a worker cannot recruit</dd></div>
+      </dl>
+      <ol class="tiers">
+        <li><b>Conductor</b><span>frontier model · reads the goal, cuts tickets, judges the end</span></li>
+        <li><b>Dept head</b><span>mid model · turns a ticket into a brief a cheap model can't misread</span></li>
+        <li class="cheap"><b>Worker</b><span>local or cloud model · does the work, returns one capped page</span></li>
+        <li><b>Reviewer</b><span>mid model · accepts, retries once, or escalates</span></li>
+      </ol>
+      <p class="ledger"><code>ledger</code> one SQLite row per model call</p>
+      <ul class="chips"><li>Python</li><li>Ollama</li><li>SQLite</li></ul>
+      <p class="links"><span class="muted">Code private</span></p>
+    </article>
+
+    <article data-ex="F" data-title="Research Agent">
+      <div class="meta"><span class="idx">F</span><span class="tag">Data</span><span>2026</span></div>
+      <h2 class="ex-title">Research Agent</h2>
+      <p class="one">A local research workspace that stores evidence and uncertainty before it ranks anything. Missing data never counts as negative evidence.</p>
+      <dl class="spec">
+        <div><dt>Tests</dt><dd><strong>485</strong> in 42 files</dd></div>
+      </dl>
+      <pre class="rules" aria-label="The four rules the codebase is built around"><span class="c"># evidence first. rank second.</span>
+UNKNOWN        <i>!=</i> LOW
+LOW VISIBILITY <i>!=</i> LOW RELEVANCE
+CONFLICTING    <i>!=</i> FALSE
+STALE          <i>!=</i> FALSE</pre>
+      <ul class="chips"><li>Python</li><li>Streamlit</li><li>evidence model</li></ul>
+      <p class="links"><span class="muted">Code private</span></p>
+    </article>
+  </div>
+
+  <script src="callit-panel.js" defer></script>
+  <script src="gallery.js" defer></script>
+</body>
+</html>

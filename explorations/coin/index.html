@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aviv Pinto · Called it</title>
+  <meta name="description" content="Aviv Pinto, Columbia Mathematics and Statistics, class of 2028. Six projects, each with the call and the check.">
+  <meta name="theme-color" content="#0b0e11">
+  <link rel="icon" href="coin-logo.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+  <a class="skip" href="#work">Skip to the exhibits</a>
+
+  <header class="bar">
+    <div class="wrap bar-inner">
+      <a class="brand" href="#top">aviv pinto</a>
+      <nav aria-label="Sections">
+        <a href="#work">Exhibits</a>
+        <a href="#design">Design</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="dock-m" aria-hidden="true">
+        <span class="now"><b data-now-letter>Hero</b><span data-now-name>Aviv Pinto</span></span>
+        <span class="slot" data-dock="m"></span>
+      </div>
+    </div>
+  </header>
+
+  <canvas id="stage" aria-hidden="true"></canvas>
+  <div class="dock-d" aria-hidden="true">
+    <span class="slot" data-dock="d"></span>
+    <p class="now"><span data-now-letter>Exhibit A</span><b data-now-name>lobkit</b></p>
+  </div>
+
+  <main id="top">
+    <section class="hero wrap" data-step="hero" data-letter="Hero" data-name="Aviv Pinto">
+      <div>
+        <p class="label">Columbia University · Mathematics &amp; Statistics · Class of 2028</p>
+        <h1>Called <span>it.</span></h1>
+        <p class="sub">Predicted vs. observed.</p>
+        <p class="lede">I'm Aviv Pinto. I like being right, and I like checking whether I was. I build models of markets and the tools that check them, and I show where they break.</p>
+        <ul class="facts">
+          <li class="seek">Seeking Summer 2027 quant internships</li>
+          <li>Quant trading</li>
+          <li>Quant research</li>
+        </ul>
+        <p class="mycalls">My calls: six below. Each one comes with its check. <a href="#lobkit">Start with lobkit</a></p>
+      </div>
+      <figure class="hero-coin" data-hero-slot style="margin:0">
+        <img src="coin-512.png" width="512" height="512" alt="CallIt coin">
+        <figcaption class="coin-cap label">1 Nod · the CallIt coin, my design</figcaption>
+      </figure>
+    </section>
+
+    <section id="work" class="exhibits wrap">
+      <div class="col">
+        <div class="section-head">
+          <p class="label warm">01 · Exhibits A to F</p>
+          <h2>Six calls, each with its check</h2>
+          <p class="note">Every number traces to the project's own files. The coin flips once per exhibit as you scroll.</p>
+        </div>
+
+        <article class="ex rv" id="lobkit" data-step="A" data-letter="Exhibit A" data-name="lobkit">
+          <div class="meta"><span class="idx">A</span><span class="label">Research · market microstructure · 2026</span></div>
+          <h3>lobkit</h3>
+          <p class="one">Rebuilds Kalshi limit-order books from L2 data and predicts whether a resting order fills. Every number carries a tag: observed, derived, estimated or assumed.</p>
+          <div class="cc">
+            <div class="call"><p class="label">The call</p><p>A resting order's chance of filling can be predicted, and the model can say how far to trust it.</p></div>
+            <div class="check"><p class="label">The check</p>
+              <dl>
+                <div><dt>Brier</dt><dd><strong>0.0502</strong> vs 0.0539 base rate</dd></div>
+                <div><dt>Skill</dt><dd><strong>+0.069</strong> real; <span class="neg">−0.122</span> with shuffled labels</dd></div>
+                <div><dt>AUC</dt><dd><strong>0.67–0.70</strong> on a held-out half</dd></div>
+                <div><dt>Sample</dt><dd><strong>9,995</strong> orders, 209 markets</dd></div>
+              </dl>
+            </div>
+          </div>
+          <p class="limit"><b>Stated limit</b><strong>44.6%</strong> of orders are ambiguous from L2 data alone.</p>
+          <ul class="chips"><li>Python</li><li>calibration</li><li>119 tests</li><li>~14.3k lines</li><li>snapshot 2026-09-02</li></ul>
+          <p class="links"><span>Code private · walkthrough on request</span></p>
+        </article>
+
+        <article class="ex rv" id="callit" data-step="B" data-letter="Exhibit B" data-name="CallIt">
+          <div class="meta"><span class="idx">B</span><span class="label">Live · team of 5 · 2026</span></div>
+          <h3>CallIt</h3>
+          <p class="one">A group prediction app. A private group posts a call, everyone answers once, and the group sees who called it.</p>
+          <div class="cc">
+            <div class="call"><p class="label">The call</p><p>A group should remember who called it.</p></div>
+            <div class="check"><p class="label">The check</p>
+              <dl>
+                <div><dt>Status</dt><dd><strong>Live</strong> at call-it.app and app.call-it.app</dd></div>
+                <div><dt>Commits</dt><dd><strong>300+</strong> in the team repo</dd></div>
+                <div><dt>My role</dt><dd>Marketing manager. Coin and UI design.</dd></div>
+              </dl>
+            </div>
+          </div>
+          <ul class="chips"><li>Next.js</li><li>Supabase</li><li>Vite</li><li>product design</li></ul>
+          <p class="links"><a href="https://call-it.app" rel="noopener">call-it.app ↗</a><a href="https://app.call-it.app" rel="noopener">open the app ↗</a><a href="#design">the coin, below</a></p>
+        </article>
+
+        <article class="ex rv" id="nudge" data-step="C" data-letter="Exhibit C" data-name="Nudge">
+          <div class="meta"><span class="idx">C</span><span class="label">AI agent · 2026</span></div>
+          <h3>Nudge</h3>
+          <p class="one">An AI receivables agent. It follows up on unpaid invoices over WhatsApp and Gmail; a Claude tool-use loop records promises to pay and disputes, with a human-takeover dashboard.</p>
+          <div class="cc">
+            <div class="call"><p class="label">The call</p><p>Follow-ups can run on their own until a person is needed.</p></div>
+            <div class="check"><p class="label">The check</p>
+              <dl>
+                <div><dt>Tests</dt><dd><strong>60+</strong></dd></div>
+                <div><dt>Size</dt><dd><strong>~8.3k</strong> lines TypeScript</dd></div>
+                <div><dt>Tools</dt><dd><code>record_promise_to_pay</code>, <code>flag_dispute</code>, <code>escalate_to_human</code></dd></div>
+              </dl>
+            </div>
+          </div>
+          <ul class="chips"><li>Claude tool use</li><li>Next.js 15</li><li>Postgres RLS</li><li>WhatsApp Cloud API</li><li>Gmail API</li></ul>
+          <p class="links"><span>Code private</span></p>
+        </article>
+
+        <article class="ex rv" id="quant-roles" data-step="D" data-letter="Exhibit D" data-name="quant-roles">
+          <div class="meta"><span class="idx">D</span><span class="label">Tool · 2026</span></div>
+          <h3>quant-roles</h3>
+          <p class="one">Pulls open quant roles from public job-board APIs into one list and checks every link.</p>
+          <div class="cc">
+            <div class="call"><p class="label">The call</p><p>One checked list beats 26 careers pages.</p></div>
+            <div class="check"><p class="label">The check</p>
+              <dl>
+                <div><dt>Snapshot</dt><dd><strong>144</strong> roles across <strong>26</strong> firms, Aug 28</dd></div>
+                <div><dt>Links</dt><dd>Every one checked before it ships</dd></div>
+              </dl>
+            </div>
+          </div>
+          <ul class="chips"><li>Python</li><li>job-board APIs</li><li>link checking</li></ul>
+          <p class="links"><span>Code private</span></p>
+        </article>
+
+        <article class="ex rv" id="orchestra" data-step="E" data-letter="Exhibit E" data-name="Orchestra">
+          <div class="meta"><span class="idx">E</span><span class="label">Agents · 2026</span></div>
+          <h3>Orchestra</h3>
+          <p class="one">A cost-aware multi-agent runner. A frontier model plans, cheap local or cloud models do the work, and a SQLite ledger records every call.</p>
+          <div class="cc">
+            <div class="call"><p class="label">The call</p><p>Expensive tokens should plan. Cheap tokens should type.</p></div>
+            <div class="check"><p class="label">The check</p>
+              <dl>
+                <div><dt>Ledger</dt><dd><strong>1</strong> SQLite row per model call</dd></div>
+                <div><dt>Depth cap</dt><dd><strong>2</strong>: a worker cannot recruit</dd></div>
+                <div><dt>Size</dt><dd><strong>~1.4k</strong> lines</dd></div>
+              </dl>
+            </div>
+          </div>
+          <ul class="chips"><li>Python</li><li>Ollama</li><li>SQLite</li></ul>
+          <p class="links"><span>Code private</span></p>
+        </article>
+
+        <article class="ex rv" id="research-agent" data-step="F" data-letter="Exhibit F" data-name="Research Agent">
+          <div class="meta"><span class="idx">F</span><span class="label">Data · 2026</span></div>
+          <h3>Research Agent</h3>
+          <p class="one">A local research workspace that stores evidence and uncertainty before it ranks anything. Unknown is never scored as low.</p>
+          <div class="cc">
+            <div class="call"><p class="label">The call</p><p>Unknown is not the same as low.</p></div>
+            <div class="check"><p class="label">The check</p>
+              <dl>
+                <div><dt>Tests</dt><dd><strong>485</strong> in 42 files</dd></div>
+                <div><dt>Size</dt><dd><strong>~16.4k</strong> lines in src</dd></div>
+              </dl>
+            </div>
+          </div>
+          <ul class="chips"><li>Python</li><li>evidence model</li></ul>
+          <p class="links"><span>Code private</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="design" class="design wrap" data-step="design" data-letter="Design" data-name="The Nod">
+      <div class="col">
+        <div class="section-head">
+          <p class="label warm">02 · Design note</p>
+          <h2>The coin on this page is mine</h2>
+        </div>
+        <div class="grid rv">
+          <div class="body">
+            <p>On CallIt, a team of five, I was the marketing manager and I designed the coin and the UI. The team named the coin the Nod: the group nodding that you called it.</p>
+            <p>The coin is a score unit, not money. Its rules are strict: always next to a number, never beside a currency symbol, never a pile of chips.</p>
+            <p class="muted">The spinning 3D version exists only on this page. In the app the coin stays flat.</p>
+          </div>
+          <div class="sheet">
+            <p class="label">Spec sheet</p>
+            <div class="sizes">
+              <figure><img src="coin-512.png" width="96" height="96" alt="CallIt coin"><figcaption>coin, 64 px and up</figcaption></figure>
+              <figure><img src="coin-logo.svg" width="40" height="40" alt="Nods"><figcaption>logo, 16 px and up</figcaption></figure>
+            </div>
+            <div class="inline">
+              <span>42 <img src="coin-logo.svg" width="16" height="16" alt="" aria-hidden="true"> Nods</span>
+              <span>Net +5 <img src="coin-logo.svg" width="16" height="16" alt="" aria-hidden="true"> Nods</span>
+            </div>
+            <ul class="rules"><li>Coral, cream and charcoal only</li><li>Signs carry gain and loss, not color alone</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact wrap" data-step="contact" data-letter="Contact" data-name="Get in touch">
+      <div class="col">
+        <div class="section-head">
+          <p class="label warm">03 · Contact</p>
+          <h2>Call it</h2>
+        </div>
+        <p class="big rv">The fastest way to reach me is GitHub. Code walkthroughs of the private projects are available on request.</p>
+        <p class="links rv"><a href="https://github.com/ap4475-stack" rel="noopener">github.com/ap4475-stack ↗</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <span>© 2026 Aviv Pinto</span>
+    <span>Static HTML · three.js · no analytics</span>
+  </footer>
+
+  <script src="coin-data.js"></script>
+  <script src="coin.js"></script>
+  <script>
+    // Reveal on scroll; works without the 3D layer.
+    (function () {
+      var els = document.querySelectorAll('.rv');
+      if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -10% 0px' });
+      els.forEach(function (e) { io.observe(e); });
+      setTimeout(function () { els.forEach(function (e) { e.classList.add('in'); }); }, 4000);
+    })();
+  </script>
+</body>
+</html>
