@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="assets/v3/base.css?v=5">
   <link rel="stylesheet" href="assets/v3/markets.css?v=3">
   <link rel="stylesheet" href="assets/v3/field.css?v=3">
-  <link rel="stylesheet" href="assets/v4/page.css?v=6">
+  <link rel="stylesheet" href="assets/v4/page.css?v=7">
 </head>
 <body>
   <a class="skip" href="#live-field">Skip to the work</a>
@@ -66,7 +66,7 @@
         <ol class="steps">
           <li><span class="st-k">Hypothesis</span><p>Late in a window, with Bitcoin just under the strike, the YES ask collapses to a few cents. Small gaps often cross back before settlement, so those cheap contracts looked underpriced. Break-even win rate: about 12%.</p></li>
           <li><span class="st-k">First test</span><p>The only usable history was 13 days of one-minute candles, 1,087 windows. The best of about 18 rule variants made <strong>+3.9c</strong> a trade over 459 trades (p ≈ 0.02).</p></li>
-          <li><span class="st-k">Breaking it</span><p>Corrected for 18 variants, the bar drops to p ≈ 0.003, and the rule fails it. One cent of slippage and the interval crosses zero. At four cents the edge is gone.</p></li>
+          <li><span class="st-k">Breaking it</span><p>Corrected for about 18 variants (a lower bound), the bar drops to p ≈ 0.003, and the rule fails it. One cent of slippage and the interval crosses zero. At four cents the edge is gone.</p></li>
         </ol>
         <figure class="v4-fig" data-chart="slippage">
           <div class="v4-plot"><p class="mk-fallback">Average P&amp;L per trade by extra fill cost: 0c +3.9c (CI +0.6 to +7.3, p 0.02); +1c +2.9c (−0.4 to +6.3, p 0.09); +2c +1.9c (−1.4 to +5.3, p 0.26); +4c −0.1c (−3.4 to +3.3, p 0.96).</p></div>
@@ -81,16 +81,16 @@
         <p class="eyebrow"><b>01</b> Markets · the verdict</p>
         <h2 class="t-title" id="c1b-h">So I rebuilt the research desk.</h2>
         <p class="t-body">A second stack, built to answer one question honestly: does any mispricing survive the cost of trading it, at my size? It has my own order-book library, a calibrated fill simulator, and a test that only uses prices you could actually have paid.</p>
-        <p class="kpi"><span class="kpi-n">0 of 99</span><span class="kpi-l">price levels beat the toll (fee plus half spread) at the 5-minute horizon, across 600 million contracts and 506 independent expiries</span></p>
+        <p class="kpi"><span class="kpi-n">0 of 99</span><span class="kpi-l">price levels clear the toll (fee plus half spread) once their 95% interval is counted, at the 5-minute horizon. 600 million contracts, but the sample that matters is 506 independent expiries.</span></p>
         <figure class="v4-fig" data-chart="ladder">
-          <div class="v4-plot"><p class="mk-fallback">Gap between the settled-YES rate and the price paid, for every price from 1c to 99c, at the 5-minute horizon. Every gap sits inside the toll band. Worst gap −3.7c at 42c.</p></div>
-          <figcaption class="cap">Real data · kalshibot desk, decision-time test on KXBTCD, 5-minute horizon. Shaded band: the toll. Whiskers: 95% cluster-bootstrap intervals over expiries.</figcaption>
+          <div class="v4-plot"><p class="mk-fallback">Gap between the settled-YES rate and the price paid, for every price from 1c to 99c, at the 5-minute horizon. Several point gaps are larger than the toll, but no interval clears it. Worst gap −3.7c at 42c, where YES is reliably overpriced.</p></div>
+          <figcaption class="cap">Real data · kalshibot desk, decision-time test on KXBTCD, 5-minute horizon. Shaded band: the toll. Whiskers: 95% cluster-bootstrap intervals over expiries. A level counts as an edge only if its whole interval clears the band; none does.</figcaption>
         </figure>
         <div class="next">
           <h3 class="t-h3">What's next</h3>
           <ul>
             <li><b>Weather markets.</b> Seven cities show a +6.9c gap, but on 272 independent expiries against a 384 floor. Not a finding yet; it needs more days or more cities.</li>
-            <li><b>A pre-registered rerun of the bot.</b> One rule, walk-forward, day-clustered bootstrap, results at +0 to +3c slippage. Size up only after 700+ forward trades with the interval above zero.</li>
+            <li><b>A pre-registered rerun of the bot.</b> One rule, walk-forward, day-clustered bootstrap, results at +0 to +3c slippage. Size up only after 700+ forward trades (about 1,300 if more rules are tried) with the interval above zero.</li>
             <li><b>Still untested.</b> Inventory management for a quoter, and other venues and products.</li>
           </ul>
         </div>
@@ -99,12 +99,12 @@
           <dl class="facts">
             <div><dt>Horizons</dt><dd>Efficient within the toll at 5, 15 and 30 minutes. Worst gaps −3.7c, −3.2c and −4.9c, all at 42c.</dd></div>
             <div><dt>Shuffle test</dt><dd>Shuffling outcomes across expiries turns the worst gap from −4.8c into −48.7c and survivors from 0 into 91, so the test can find an edge when one exists.</dd></div>
-            <div><dt>Bug I caught</dt><dd>A last-traded price observed a median 851 seconds before close printed a fake +38.9c edge. Caught and gated.</dd></div>
+            <div><dt>Bug I caught</dt><dd>On Ethereum hourly contracts, a last-traded price observed a median 851 seconds before close printed a fake +38.9c edge. Caught and gated.</dd></div>
             <div><dt>Claim I retracted</dt><dd>Quoting the wings looked like +2.19c a contract on 17 expiries. On 209 it was −0.03c.</dd></div>
             <div><dt>Order books</dt><dd><strong>387,697</strong> events rebuilt, 100% valid, 0 sequence defects. 118 tests, one per defect found.</dd></div>
             <div><dt>Fill sim</dt><dd>Brier <strong>0.0502</strong> vs 0.0539 base on 9,995 simulated orders; 44.6% of orders are ambiguous from L2 alone, so not trusted for point fill estimates.</dd></div>
             <div><dt>What held</dt><dd>A queue-imbalance signal with AUC 0.640 on 32,073 observations. Useful as a quoting filter, not as a trade: +0.42c gross, −4.10c net.</dd></div>
-            <div><dt>Live</dt><dd>Quarter-Kelly under per-market caps, 470+ unit tests, a monitoring dashboard. Seven settled live trades so far, which is statistically uninformative.</dd></div>
+            <div><dt>Live</dt><dd>Hard risk caps (2 contracts a window, 5 open positions, a $3 session budget), 470+ unit tests, a monitoring dashboard. Seven settled live trades so far, which is statistically uninformative.</dd></div>
           </dl>
           <figure class="mk-fig" data-mk="calib">
             <div class="mk-plot"><p class="mk-fallback">Seven calibration bins, predicted vs observed fill rate.</p></div>
@@ -239,7 +239,7 @@
               <dl class="facts">
                 <div><dt>Problems</dt><dd><strong>530</strong> curated: 167 easy, 259 medium, 104 hard, plus 62 advanced</dd></div>
                 <div><dt>Roadmap</dt><dd>12 systems, from Counting and Combinatorics to Poisson Processes, each unlocked at 60% mastery</dd></div>
-                <div><dt>Games</dt><dd><strong>17</strong> trading and market-making games, such as Make Me a Market and Dice Market Making</dd></div>
+                <div><dt>Games</dt><dd><strong>17</strong> practice games and drills, such as Make Me a Market and Dice Market Making</dd></div>
                 <div><dt>Firms</dt><dd>Prep tracks for 10 firms, including Optiver, Jane Street, SIG and Citadel</dd></div>
                 <div><dt>Built with</dt><dd>Vanilla JS, KaTeX, Supabase auth, Vercel; spaced repetition and progress tracking</dd></div>
               </dl>
@@ -252,9 +252,9 @@
               <p class="prod-l">A city game: rate every burger you eat, then guess what the city thinks.</p>
               <dl class="facts">
                 <div><dt>The loop</dt><dd>Crowd ratings stay hidden until you rate, enforced in the database with Postgres row-level security</dd></div>
-                <div><dt>Map</dt><dd><strong>67</strong> hand-vetted spots across all five boroughs</dd></div>
+                <div><dt>Map</dt><dd>Hand-vetted burger spots across all five boroughs, plus community submissions that go official at 100 votes</dd></div>
                 <div><dt>Game</dt><dd>Monthly brackets, squads, streaks with push reminders, visits verified by GPS or receipt photo</dd></div>
-                <div><dt>Build</dt><dd>Solo: <strong>184</strong> commits, about 38k lines. Next.js 15, React 19, Supabase, Google Maps and Places, Gemini, Vercel cron jobs</dd></div>
+                <div><dt>Build</dt><dd>Solo: <strong>184</strong> commits, about 37k lines. Next.js 15, React 19, Supabase, Google Maps and Places, Gemini, Vercel cron jobs</dd></div>
               </dl>
             </div>
           </article>
@@ -319,6 +319,6 @@
   <script src="assets/v3/site.js?v=2" defer></script>
   <script src="assets/v3/markets.js?v=2" defer></script>
   <script src="assets/v3/field.js?v=2" defer></script>
-  <script src="assets/v4/charts.js?v=2" defer></script>
+  <script src="assets/v4/charts.js?v=3" defer></script>
 </body>
 </html>

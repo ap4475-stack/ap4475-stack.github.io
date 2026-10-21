@@ -51,7 +51,7 @@ Shapes: 12px cards with a hairline border and a soft shadow, 8px buttons, no off
 ## Honesty rules (from QA history)
 - Real data comes only from `assets/v3/data/*.json` and `docs/CONTENT.md`.
 - Illustrative visuals (Monte Carlo fan, decline curve, order-book ridges, FSM diagram) carry a visible "illustrative" label.
-- Kalshi bot: show only facts verified against its code and data: live-trades Kalshi 15-minute Bitcoin up/down contracts; quarter-Kelly sizing under per-market exposure caps; routes against live books; monitoring dashboard; 470+ unit tests; private repo.
+- Kalshi bot: show only facts verified against its code and data: live-trades Kalshi 15-minute Bitcoin up/down contracts; hard risk caps per window, position count and session budget; monitoring dashboard; 470+ unit tests; private repo.
 - Stat-arb: show only figures that appear in the public repo's README or data files. Working notes are in docs/PRIVATE.md (gitignored).
 - SPAC pricer and OMS client: résumé text only (no code on disk). Visuals are illustrative.
 - Lionheart: résumé wording only. No deal names, tickers, numbers or client details.

@@ -182,3 +182,5 @@ text.c-dead { stroke: none; fill: var(--warn); }
 .prod .facts strong { font-size: 1rem; }
 @media (max-width: 900px) { .prod-grid { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .prod .facts > div { grid-template-columns: 1fr; } }
+
+.c-pt.c-out { fill: var(--paper); stroke: var(--rust); stroke-width: 1.5; }

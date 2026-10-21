@@ -33,9 +33,9 @@
   function ladder(W) {
     const rows = D.ladder, H = 240, L = 44, R = 16, T = 14, B = 34;
     const xs = (p) => L + (p - 1) / 98 * (W - L - R);
-    const lim = 6, ys = (v) => T + (lim - Math.max(-lim, Math.min(lim, v))) / (2 * lim) * (H - T - B);
+    const lim = 8, ys = (v) => T + (lim - Math.max(-lim, Math.min(lim, v))) / (2 * lim) * (H - T - B);
     let g = '';
-    for (let v = -6; v <= 6; v += 3) g += `<line class="c-grid" x1="${L}" x2="${W - R}" y1="${f1(ys(v))}" y2="${f1(ys(v))}"/>` + txt(L - 8, ys(v) + 4, (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v) + 'c', 'c-tick', ' text-anchor="end"');
+    for (let v = -8; v <= 8; v += 4) g += `<line class="c-grid" x1="${L}" x2="${W - R}" y1="${f1(ys(v))}" y2="${f1(ys(v))}"/>` + txt(L - 8, ys(v) + 4, (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v) + 'c', 'c-tick', ' text-anchor="end"');
     // toll band: +/- toll at each price
     const up = rows.map((r) => `${f1(xs(r[0]))},${f1(ys(r[6]))}`), dn = rows.slice().reverse().map((r) => `${f1(xs(r[0]))},${f1(ys(-r[6]))}`);
     g += `<polygon class="c-band" points="${up.concat(dn).join(' ')}"/>`;
@@ -44,13 +44,13 @@
       const x = xs(r[0]);
       g += `<line class="c-ci c-whisk" x1="${f1(x)}" x2="${f1(x)}" y1="${f1(ys(r[5]))}" y2="${f1(ys(r[4]))}"/>`;
     });
-    rows.forEach((r) => { g += `<circle class="c-pt ${r[7] ? 'c-dead' : 'c-live'}" cx="${f1(xs(r[0]))}" cy="${f1(ys(r[3]))}" r="2.6"><title>${r[0]}c: settled YES ${r[2]}%, gap ${sgn(r[3])}c, toll ${r[6]}c</title></circle>`; });
+    rows.forEach((r) => { g += `<circle class="c-pt ${Math.abs(r[3]) > r[6] ? 'c-out' : 'c-live'}" cx="${f1(xs(r[0]))}" cy="${f1(ys(r[3]))}" r="2.6"><title>${r[0]}c: settled YES ${r[2]}%, gap ${sgn(r[3])}c, toll ${r[6]}c</title></circle>`; });
     const worst = rows.reduce((a, r) => (r[3] < a[3] ? r : a), rows[0]);
     g += txt(xs(worst[0]) + 8, ys(worst[3]) + 14, `worst ${sgn(worst[3])}c at ${worst[0]}c`, 'c-tick');
     [1, 25, 50, 75, 99].forEach((p) => { g += txt(xs(p), H - B + 18, p + 'c', 'c-tick', ' text-anchor="middle"'); });
     g += txt(W - R, H - 2, 'price paid', 'c-axis', ' text-anchor="end"');
     g += txt(L + 6, T + 12, 'settled YES minus price', 'c-axis');
-    return `<svg xmlns="${NS}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="For all 99 prices from 1 to 99 cents, the gap between the settled-YES rate and the price paid sits inside the toll band. The worst gap is minus 3.7 cents at 42 cents.">${g}</svg>`;
+    return `<svg xmlns="${NS}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="For each of 99 prices from 1 to 99 cents, the gap between the settled-YES rate and the price paid, with 95 percent intervals and the toll band. No interval clears the toll. The worst gap is minus 3.7 cents at 42 cents.">${g}</svg>`;
   }
 
   const R = { slippage, ladder };
