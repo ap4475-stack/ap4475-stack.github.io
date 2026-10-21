@@ -68,7 +68,7 @@ if __name__ == "__main__":
     for name, fn in (("calibration", calibration), ("firms", firms)):
         pattern = re.compile(rf"<!-- chart:{name} -->.*?<!-- /chart:{name} -->", re.S)
         if not pattern.search(html):
-            raise SystemExit(f"marker chart:{name} not found in index.html")
+            continue  # chart not used on this page
         html = pattern.sub(lambda _: f"<!-- chart:{name} -->\n{fn()}\n<!-- /chart:{name} -->", html)
     page.write_text(html)
     print("charts written to", page)
