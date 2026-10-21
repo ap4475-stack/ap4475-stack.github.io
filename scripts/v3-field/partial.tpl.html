@@ -1,0 +1,172 @@
+    <!-- v3-field (@field): sites 05 to 07. Static SVGs are baked in; assets/v3/field.js only animates them. -->
+    <link rel="stylesheet" href="assets/v3/field.css?v=2">
+
+    <section class="site fd-site" id="reservoir" data-site="reservoir" aria-labelledby="reservoir-h">
+      <div class="sheet fd-sheet">
+        <p class="ref"><b>Site 05</b> · The Reservoir · Grid A3</p>
+        <h2 class="d2" id="reservoir-h">The Reservoir</h2>
+        <p class="fd-role mono">Lionheart Capital · Miami, FL<br>Quantitative Investment Analyst, Public Markets, SPACs &amp; Energy<br>Jan 2026 to Aug 2026</p>
+        <p class="fd-lede">An oil field and a deSPAC raise the same question: how much is really in there, and how much of it reaches the holder. I built the models that answer it, and the data plumbing under them.</p>
+        <p class="fd-note muted">Wording from my résumé. Deal names, tickers, figures and clients stay private.</p>
+
+        <div class="fd-strand">
+          <p class="fd-k mono"><span>A</span> Upstream oil &amp; gas</p>
+          <p>Reserves-based and DCF valuations for international upstream oil &amp; gas deals across commodity-price scenarios: decline curves, capex timing, production ramp. I pressure-tested third-party technical reports against independent estimates.</p>
+          <figure class="fd-fig fd-plot">
+            <span class="tag-illus">Illustrative decline curve, not deal data</span>
+  {{DECLINE}}
+            <figcaption class="muted">One made-up well: a 4-month ramp, then Arps hyperbolic decline (q<sub>i</sub> = 100, D<sub>i</sub> = 6% a month, b = 0.9), priced under three commodity decks. The shaded band is the spread a valuation has to carry.</figcaption>
+          </figure>
+        </div>
+
+        <div class="fd-strand">
+          <p class="fd-k mono"><span>B</span> deSPAC structure</p>
+          <p>deSPAC valuation models across the full deal structure: trust value per share, redemption-rate scenarios, sponsor promote and founder-share dilution, warrant overhang, PIPE financing. Sensitivity tables on the value drivers; I presented and defended the recommendations to partners.</p>
+          <figure class="fd-fig fd-plot">
+            <span class="tag-illus">Illustrative structure diagram, no deal data</span>
+  {{DESPAC}}
+            <figcaption class="muted">Redemptions sit on both sides: they drain the trust and shrink the public float, so they move cash and share count at once.</figcaption>
+          </figure>
+        </div>
+
+        <div class="fd-strand">
+          <p class="fd-k mono"><span>C</span> Internal databases</p>
+          <p>Built Python automation tools and internal databases consolidating technical, market and counterparty data for IC memos.</p>
+          <figure class="fd-fig fd-plot">
+            <span class="tag-illus">Illustrative schema, not the real database</span>
+  {{SCHEMA}}
+            <figcaption class="muted">The shape of it: three sources, one view the memo reads from. Field names here are generic.</figcaption>
+          </figure>
+        </div>
+
+        <dl class="facts fd-facts">
+          <div><dt>Follow-on</dt><dd>Sized public-equity allocations for a follow-on offering using probability-weighted bear/base/bull returns; triangulated EV/Sales against comparable M&amp;A; pro-forma dilution, convertibles, venture debt and cash-runway constraints.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="site fd-site" id="settlements" data-site="settlements" aria-labelledby="settlements-h">
+      <div class="sheet fd-sheet">
+        <p class="ref"><b>Site 06</b> · Settlements · Grid B4</p>
+        <h2 class="d2" id="settlements-h">Settlements</h2>
+        <p class="fd-lede">Products I built. Two are live and open to anyone. The rest are smaller camps with private code.</p>
+
+        <article class="fd-town" aria-labelledby="qu-h">
+          <header class="fd-pinhead">{{PIN}}<div><p class="ref"><b>Pin 06-A</b> · live</p><h3 class="d3" id="qu-h">quant-universe.com</h3></div></header>
+          <figure class="fd-aerial">
+            <p class="fd-aerial-strip mono" aria-hidden="true"><span>Aerial 06-A</span><span>landing page</span></p>
+            <img src="assets/v3/img/quant-universe.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="Landing page of quant-universe.com, titled Quant Universe: Interview Prep Terminal, with counts for curated problems, systems, firm OA simulations and trading games.">
+          </figure>
+          <p>My interview-prep terminal for quant roles. A question bank with spaced repetition and progress tracking, market-making and trading games, and firm profiles.</p>
+          <dl class="facts">
+            <div><dt>Problems</dt><dd><strong>530</strong>curated</dd></div>
+            <div><dt>Systems</dt><dd><strong>12</strong>in the topic roadmap</dd></div>
+            <div><dt>Firm OAs</dt><dd><strong>10</strong>online-assessment simulations</dd></div>
+            <div><dt>Games</dt><dd><strong>24</strong>trading games</dd></div>
+          </dl>
+          <ul class="chips fd-chips"><li>vanilla JS</li><li>Vercel</li><li>Supabase auth</li></ul>
+          <p class="fd-links"><a class="btn primary" href="https://quant-universe.com" rel="noopener">Open quant-universe.com ↗</a></p>
+        </article>
+
+        <article class="fd-town fd-town-callit" aria-labelledby="callit-h">
+          <header class="fd-pinhead">{{PIN}}<div><p class="ref"><b>Pin 06-B</b> · live · team</p><h3 class="d3" id="callit-h">CallIt</h3></div></header>
+          <div class="fd-callit">
+            <figure class="fd-aerial fd-phone">
+              <p class="fd-aerial-strip mono" aria-hidden="true"><span>06-B</span></p>
+              <img src="assets/v3/img/callit-live.jpg" width="560" height="1120" loading="lazy" decoding="async" alt="The CallIt landing page at call-it.app on a phone, headlined: We remember who called the vote.">
+            </figure>
+            <div>
+              <p>A private group posts a call, everyone answers once, and the group sees who called it.</p>
+              <p>A team of five. I am the marketing manager, and I designed the CallIt coin and the UI.</p>
+              <ul class="chips fd-chips"><li>Next.js</li><li>Supabase</li><li>Vite</li></ul>
+              <p class="fd-links"><a class="btn" href="https://call-it.app" rel="noopener">call-it.app ↗</a></p>
+            </div>
+          </div>
+        </article>
+
+        <p class="fd-k mono fd-camps-k">Smaller camps · code private</p>
+        <ul class="fd-camps">
+          <li>{{PIN}}<div><h3>Nudge</h3><p>AI receivables agent. Follows up on unpaid invoices over WhatsApp and Gmail; a Claude tool-use loop records promises to pay and disputes, with a human-takeover dashboard.</p><p class="fd-num mono"><strong>60+</strong> tests</p></div></li>
+          <li>{{PIN}}<div><h3>Research Agent</h3><p>Evidence-first research workspace. It stores evidence and uncertainty before it ranks anything; unknown is never scored as low.</p><p class="fd-num mono"><strong>485</strong> tests</p></div></li>
+          <li>{{PIN}}<div><h3>Orchestra</h3><p>Cost-aware multi-agent runner. A frontier model plans, cheap local or cloud models do the work, and a SQLite ledger records every call.</p><p class="fd-num mono">Python · Ollama · SQLite</p></div></li>
+          <li>{{PIN}}<div><h3>quant-roles</h3><p>Open-role tracker. Pulls open quant roles from public job-board APIs and checks every link.</p><p class="fd-num mono"><strong>144</strong> roles · <strong>26</strong> firms · Aug 28 snapshot</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="site fd-site" id="survey-office" data-site="survey-office" aria-labelledby="survey-office-h">
+      <div class="sheet fd-sheet">
+        <p class="ref"><b>Site 07</b> · Survey Office · Grid C4</p>
+        <h2 class="d2" id="survey-office-h">Survey Office</h2>
+        <p class="fd-lede">The legend of the map: where I studied, where I served, what I work with, and how to reach me.</p>
+
+        <div class="fd-legend">
+          <div class="fd-cell fd-wide">
+            <p class="fd-lab mono">Education</p>
+            <p><strong>Columbia University</strong><br>B.A. Mathematics &amp; Statistics · expected May 2028</p>
+            <p class="fd-small">Coursework: Math of Finance, Algorithmic Trading, Applied Machine Learning, Elementary Stochastic Processes, Data Structures.</p>
+          </div>
+          <div class="fd-cell fd-wide">
+            <p class="fd-lab mono">Honors</p>
+            <ul class="fd-list">
+              <li>Dean's List <span class="mono">2025</span></li>
+              <li>GS Israel Endowed Fund Scholarship <span class="mono">2025-26</span></li>
+              <li>Putnam Mathematical Competition <span class="mono">2025</span>: Top 600</li>
+            </ul>
+          </div>
+          <div class="fd-cell fd-wide">
+            <p class="fd-lab mono">Service</p>
+            <p><strong>Israel Defense Forces, Unit 142</strong><br>Head of Training · 2020 to 2022</p>
+            <p class="fd-small">Planned and led the unit's training and operational-readiness programs. Twice awarded "Outstanding Soldier" (2020, 2021). After service, in 2024, I raised <span class="mono">$250,000+</span> in equipment and aid for deployed units through U.S. donor networks.</p>
+          </div>
+          <div class="fd-cell fd-wide">
+            <p class="fd-lab mono">Skills</p>
+            <div class="fd-skills">
+              <p class="fd-small"><span class="mono">Languages &amp; tools</span></p>
+              <ul class="chips"><li>Python</li><li>R</li><li>Java</li><li>SQL</li><li>Git</li><li>LaTeX</li></ul>
+              <p class="fd-small"><span class="mono">Quantitative</span></p>
+              <ul class="chips"><li>Monte Carlo pricing</li><li>Black-Scholes &amp; Greeks</li><li>risk-neutral valuation</li><li>implied/realized vol</li><li>Markov &amp; Poisson processes</li></ul>
+              <p class="fd-small"><span class="mono">ML &amp; data</span></p>
+              <ul class="chips"><li>PyTorch</li><li>XGBoost</li><li>scikit-learn</li><li>pandas/NumPy</li><li>WRDS</li><li>walk-forward backtesting</li><li>transaction-cost modeling</li></ul>
+            </div>
+          </div>
+          <div class="fd-cell fd-wide fd-contact">
+            <p class="fd-lab mono">Contact</p>
+            <p class="fd-contact-lead">Recruiting for Summer 2027 quant trading and research roles.</p>
+            <ul class="fd-list fd-contact-list mono">
+              <li><a href="mailto:aviv.pinto.lh@gmail.com">aviv.pinto.lh@gmail.com</a></li>
+              <li><a href="https://quant-universe.com" rel="noopener">quant-universe.com</a></li>
+              <li><a href="https://github.com/ap4475-stack" rel="noopener">github.com/ap4475-stack</a></li>
+              <li><span>New York, NY</span></li>
+            </ul>
+          </div>
+          <div class="fd-cell fd-plot">
+            <p class="fd-lab mono">Key</p>
+            <ul class="fd-key-list">
+              <li>{{KEY_MINOR}}<span>contour</span></li>
+              <li>{{KEY_INDEX}}<span>index contour, every 5th</span></li>
+              <li>{{KEY_DATA}}<span>data line</span></li>
+              <li>{{KEY_PIN}}<span>settlement</span></li>
+              <li>{{KEY_HERE}}<span>you are here</span></li>
+              <li>{{KEY_ILLUS}}<span>illustrative</span></li>
+            </ul>
+          </div>
+          <div class="fd-cell fd-plot fd-bearing">
+            <p class="fd-lab mono">Bearing &amp; scale</p>
+            <div class="fd-bearing-row">
+              {{NORTH}}
+              <div>
+                {{SCALE}}
+                <p class="fd-small mono">1 unit = 1 site · 8 sites</p>
+              </div>
+            </div>
+          </div>
+          <div class="fd-cell fd-wide fd-colophon">
+            <p class="fd-lab mono">Colophon</p>
+            <p class="fd-small">Every contour on this map comes from one procedural heightfield, drawn in your browser. Data panels are read from real files: test counts, backtests and role tallies are snapshots of each project's own files, dated where they appear. Anything made up to show a shape is labeled illustrative. Set in Geist and Geist Mono.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="assets/v3/field.js?v=1" defer></script>

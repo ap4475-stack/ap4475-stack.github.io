@@ -1,0 +1,152 @@
+/* v3-field (@field): sites 05 reservoir, 06 settlements, 07 survey-office.
+   Consumes base.css tokens only. Every rule is scoped under .fd-site. */
+
+.fd-site .fd-sheet { width: min(100%, 640px); }
+.fd-site .d2 { margin: 14px 0 12px; }
+.fd-site .fd-role { font-size: 0.8125rem; line-height: 1.6; color: var(--ink); margin: 0 0 16px; padding-left: 12px; border-left: 2px solid var(--rust); }
+.fd-site .fd-lede { font-size: 1.125rem; margin: 0 0 10px; max-width: 56ch; }
+.fd-site .fd-note { font-size: 0.8125rem; margin: 0 0 8px; }
+.fd-site p { margin: 0 0 12px; }
+
+/* strand headers */
+.fd-site .fd-k {
+  display: flex; align-items: center; gap: 10px; margin: 0 0 10px;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink);
+}
+.fd-site .fd-k span {
+  display: inline-grid; place-items: center; width: 22px; height: 22px; border: 1px solid var(--rust); color: var(--rust); border-radius: 50%;
+  font-size: 0.6875rem; letter-spacing: 0;
+}
+.fd-site .fd-strand { border-top: 1px solid var(--contour-2); padding-top: 18px; margin-top: 22px; }
+.fd-site .fd-facts { margin-top: 26px; }
+.fd-site .fd-facts dd { font-size: 0.9375rem; }
+
+/* figures */
+.fd-site .fd-fig { margin: 14px 0 0; padding: 12px; background: var(--paper-2); border: 1px solid var(--contour); }
+.fd-site .fd-fig .tag-illus { margin-bottom: 10px; }
+.fd-site .fd-fig figcaption { font-size: 0.8125rem; line-height: 1.5; margin-top: 10px; }
+.fd-site .fd-fig sub { font-size: 0.7em; }
+.fd-site .fd-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.fd-site .fd-n { display: none; }
+@media (max-width: 560px) {
+  .fd-site .fd-w { display: none; }
+  .fd-site .fd-n { display: block; }
+}
+
+/* svg paint: tokens only, so the night survey works */
+.fd-site .fd-svg path, .fd-site .fd-pin path { fill: none; stroke-width: 1.4; stroke-linejoin: round; }
+.fd-site .fd-svg .s-ink { stroke: var(--ink); }
+.fd-site .fd-svg .s-ink2 { stroke: var(--ink-2); }
+.fd-site .fd-svg .s-sea { stroke: var(--sea); }
+.fd-site .fd-svg .s-rust { stroke: var(--rust); }
+.fd-site .fd-svg .s-grid { stroke: var(--contour); stroke-width: 1; }
+.fd-site .fd-svg .s-idx { stroke: var(--contour-2); stroke-width: 1.8; }
+.fd-site .fd-svg .w2 { stroke-width: 2.2; }
+.fd-site .fd-svg .dash { stroke-dasharray: 4 3; }
+.fd-site .fd-svg .f-band { fill: color-mix(in srgb, var(--sea) 18%, transparent); stroke: none; }
+.fd-site .fd-svg .f-ink { fill: var(--ink); stroke: none; }
+.fd-site .fd-svg .f-rust { fill: var(--rust); stroke: none; }
+.fd-site .fd-svg rect.f-box { fill: var(--paper); stroke: none; }
+.fd-site .fd-svg text { font-family: var(--mono); font-size: 11px; fill: var(--ink-2); }
+.fd-site .fd-svg .t-ink { fill: var(--ink); }
+.fd-site .fd-svg .t-sans { font-family: var(--sans); font-size: 13px; }
+.fd-site .fd-svg .t-strong { font-weight: 600; }
+.fd-site .fd-svg.fd-n text { font-size: 11.5px; }
+.fd-site .fd-svg.fd-n .t-sans { font-size: 12.5px; }
+
+/* pen-plotter reveal: only when field.js arms a plot (never without JS or with reduced motion) */
+.fd-site .fd-armed .fd-pen { stroke-dasharray: 100 100; stroke-dashoffset: 100; }
+.fd-site .fd-armed .fd-fade { opacity: 0; }
+.fd-site .fd-armed.fd-on .fd-pen {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.2s cubic-bezier(.55, .1, .3, 1) calc(var(--i, 0) * 70ms);
+}
+.fd-site .fd-armed.fd-on .fd-fade { opacity: 1; transition: opacity 0.5s ease calc(var(--i, 0) * 70ms + 350ms); }
+/* dashed strokes keep their dash once drawn */
+.fd-site .fd-armed.fd-done .fd-pen { stroke-dasharray: none; transition: none; }
+.fd-site .fd-armed.fd-done .fd-pen.dash { stroke-dasharray: 4 3; }
+
+/* settlements: pins and towns */
+.fd-site .fd-pin { width: 22px; height: 28px; flex: none; }
+.fd-site .fd-pin path { stroke: var(--rust); stroke-width: 1.6; fill: color-mix(in srgb, var(--rust) 12%, transparent); }
+.fd-site .fd-pin circle { fill: var(--rust); }
+.fd-site .fd-town { border-top: 1px solid var(--contour-2); padding-top: 18px; margin-top: 22px; }
+.fd-site .fd-pinhead { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+.fd-site .fd-pinhead .ref { margin: 0 0 4px; }
+.fd-site .fd-pinhead .d3 { overflow-wrap: anywhere; }
+.fd-site .fd-chips { margin: 14px 0; }
+.fd-site .fd-links { margin: 0; }
+.fd-site .fd-town .facts { margin-top: 4px; }
+
+/* the "aerial photo" frame: paper mat, ruled border, corner ticks */
+.fd-site .fd-aerial {
+  position: relative; margin: 0 0 14px; padding: 8px 8px 10px; background: var(--paper-2);
+  border: 1px solid var(--contour-2);
+}
+.fd-site .fd-aerial::before, .fd-site .fd-aerial::after {
+  content: ""; position: absolute; width: 14px; height: 14px; border: 0 solid var(--rust); pointer-events: none;
+}
+.fd-site .fd-aerial::before { top: -5px; left: -5px; border-width: 2px 0 0 2px; }
+.fd-site .fd-aerial::after { bottom: -5px; right: -5px; border-width: 0 2px 2px 0; }
+.fd-site .fd-aerial img { display: block; width: 100%; height: auto; border: 1px solid var(--contour); filter: saturate(0.9); }
+.fd-site .fd-aerial-strip {
+  display: flex; justify-content: space-between; gap: 8px; margin: 0 0 6px;
+  font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2);
+}
+.fd-site .fd-callit { display: grid; grid-template-columns: 148px 1fr; gap: 20px; align-items: start; }
+.fd-site .fd-phone { margin: 0; }
+.fd-site .fd-phone img { border-radius: 14px; }
+@media (max-width: 420px) {
+  .fd-site .fd-callit { grid-template-columns: 1fr; }
+  .fd-site .fd-phone { width: 150px; }
+}
+
+.fd-site .fd-camps-k { margin-top: 26px; border-top: 1px solid var(--contour-2); padding-top: 18px; }
+.fd-site .fd-camps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--contour); }
+.fd-site .fd-camps li { display: flex; gap: 10px; padding: 14px 12px 14px 0; border-bottom: 1px solid var(--contour); }
+.fd-site .fd-camps li:nth-child(odd) { border-right: 1px solid var(--contour); }
+.fd-site .fd-camps li:nth-child(even) { padding-left: 12px; }
+.fd-site .fd-camps .fd-pin { width: 16px; height: 20px; margin-top: 3px; }
+.fd-site .fd-camps h3 { font: 600 1rem/1.3 var(--sans); margin: 0 0 4px; }
+.fd-site .fd-camps p { font-size: 0.875rem; line-height: 1.5; margin: 0 0 6px; }
+.fd-site .fd-camps .fd-num { font-size: 0.75rem; color: var(--ink-2); margin: 0; }
+.fd-site .fd-camps .fd-num strong { color: var(--ink); font-weight: 500; }
+@media (max-width: 560px) {
+  .fd-site .fd-camps { grid-template-columns: 1fr; }
+  .fd-site .fd-camps li:nth-child(odd) { border-right: 0; }
+  .fd-site .fd-camps li:nth-child(even) { padding-left: 0; }
+}
+
+/* survey office: a map legend box of ruled cells */
+.fd-site .fd-legend {
+  display: grid; grid-template-columns: 1fr 1fr; margin-top: 18px;
+  border: 2px solid var(--ink); outline: 1px solid var(--ink); outline-offset: 3px;
+}
+.fd-site .fd-cell { padding: 14px 16px; border-bottom: 1px solid var(--contour-2); min-width: 0; }
+.fd-site .fd-cell.fd-wide { grid-column: 1 / -1; }
+.fd-site .fd-cell:not(.fd-wide) + .fd-cell:not(.fd-wide) { border-left: 1px solid var(--contour-2); }
+.fd-site .fd-cell:last-child { border-bottom: 0; }
+.fd-site .fd-cell p:last-child, .fd-site .fd-cell ul:last-child { margin-bottom: 0; }
+.fd-site .fd-lab { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); margin: 0 0 8px; }
+.fd-site .fd-small { font-size: 0.875rem; line-height: 1.55; color: var(--ink-2); }
+.fd-site .fd-cell strong { font-weight: 600; }
+.fd-site .fd-list { list-style: none; margin: 0; padding: 0; }
+.fd-site .fd-list li { padding: 3px 0; }
+.fd-site .fd-list .mono { font-size: 0.875rem; color: var(--ink-2); }
+.fd-site .fd-skills .fd-small { margin: 10px 0 6px; }
+.fd-site .fd-skills .fd-small:first-child { margin-top: 0; }
+.fd-site .fd-contact { background: var(--paper-2); }
+.fd-site .fd-contact-lead { font-size: 0.9375rem; }
+.fd-site .fd-contact-list li { display: flex; align-items: center; min-height: 32px; font-size: 0.875rem; overflow-wrap: anywhere; }
+.fd-site .fd-contact-list a { padding: 4px 0; }
+.fd-site .fd-key-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.fd-site .fd-key-list li { display: flex; align-items: center; gap: 10px; font: 400 0.75rem var(--mono); color: var(--ink-2); }
+.fd-site .fd-key { width: 40px; height: 20px; flex: none; }
+.fd-site .fd-bearing-row { display: flex; align-items: center; gap: 16px; }
+.fd-site .fd-north { width: 44px; height: auto; flex: none; }
+.fd-site .fd-scale { width: 100%; max-width: 200px; height: auto; }
+.fd-site .fd-bearing .fd-small { margin: 6px 0 0; font-size: 0.75rem; }
+@media (max-width: 480px) {
+  .fd-site .fd-legend { grid-template-columns: 1fr; }
+  .fd-site .fd-cell:not(.fd-wide) + .fd-cell:not(.fd-wide) { border-left: 0; }
+}

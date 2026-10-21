@@ -63,3 +63,47 @@ Contact details, résumé and other personal items stay out until Aviv approves 
 - Metrics: 144 roles across 26 firms in the Aug 28 README snapshot . Re-run `./run.sh` to refresh.
 - Source: `~/work/quant-roles/QUANT-ROLES.md` (header and table); ATS list from `probe_firm.py`.
 - Link: private.
+
+---
+
+# v3 sources: résumé (provided by Aviv, 2026-10-21)
+
+Source file: `~/Documents/Aviv_Pinto_Resume_.pdf`, supplied by Aviv for the site. These are his own statements. Show them as he wrote them, and don't add deal names, tickers or client details beyond what the résumé says.
+
+## Contact (approved by Aviv by supplying the résumé)
+- Email aviv.pinto.lh@gmail.com · quant-universe.com · github.com/ap4475-stack · New York, NY
+
+## Education
+- Columbia University, B.A. Mathematics & Statistics, expected May 2028.
+- Honors: Dean's List 2025; GS Israel Endowed Fund Scholarship 2025-26; Putnam Mathematical Competition 2025: Top 600.
+- Coursework: Math of Finance, Algorithmic Trading, Applied Machine Learning, Elementary Stochastic Processes, Data Structures.
+
+## Experience
+- **Lionheart Capital**, Miami, FL. Quantitative Investment Analyst, Public Markets, SPACs & Energy. Jan 2026 to Aug 2026.
+  - deSPAC valuation models across the full deal structure: trust value per share, redemption-rate scenarios, sponsor promote and founder-share dilution, warrant overhang, PIPE financing. Sensitivity tables on the value drivers; presented and defended recommendations to partners.
+  - Sized public-equity allocations for a follow-on offering using probability-weighted bear/base/bull returns; triangulated EV/Sales against comparable M&A; pro-forma dilution, convertibles, venture debt and cash-runway constraints.
+  - Reserves-based and DCF valuations for international upstream oil & gas deals across commodity-price scenarios (decline curves, capex timing, production ramp); pressure-tested third-party technical reports against independent estimates.
+  - Built Python automation tools and internal databases consolidating technical, market and counterparty data for IC memos.
+- **Israel Defense Forces, Unit 142**, Israel. Head of Training, 2020 to 2022.
+  - Planned and led the unit's training and operational-readiness programs; twice awarded "Outstanding Soldier" (2020, 2021).
+  - Post-service (2024): raised $250,000+ in equipment and aid for deployed units through U.S. donor networks.
+
+## Projects (résumé)
+- **ML Statistical Arbitrage: Reproduction & Stress Test** (2025). Python, PyTorch, XGBoost, H2O, WRDS. Reproduced Krauss, Do & Huck (2017) across 23 walk-forward periods, matching 90% of its reported pre-cost returns after fixing 15+ hidden library defaults. Ranking trades by model confidence lifted post-cost returns from 0.279% to 0.348%; skipping trades too small to cover costs raised returns from 0.224% to 0.243% while cutting turnover from 2.69 to 1.66.
+- **Kalshi Trading Bot: Live Bitcoin Binary Markets** (2026). Python. Live-trades Kalshi 15-minute Bitcoin up/down contracts: expected value from realized BTC volatility and the distance of spot from 15-minute and 1-hour moving averages relative to contract price, validated on 3 months of backtest. Quarter-Kelly sizing under per-market exposure caps, routes against live books, monitoring dashboard; 470+ unit tests across 19 modules.
+- **SPAC Warrant Pricer & Arbitrage Study** (2026). Python. Monte Carlo of the stock path and redemption rate jointly, pricing SPAC warrants as a distribution; calibrates volatility point-in-time; compares Black-Scholes, dilution-adjusted BS and the joint-redemption model across live SPACs. Back-tested a dollar-neutral cheap-warrant strategy with survivorship-bias handling; documents where it breaks (redemption and volatility dynamics, PIPE effects, thin liquidity).
+- **Low-Latency Order Management Client** (2026). Python, Algorithmic Trading coursework. FSM-based order manager for a simulated exchange over TCP order entry and UDP L2 market data; reconstructs the full order book and pegs orders to the BBO with verified state consistency across 100 timed orders (code withheld per course policy).
+
+## Skills (résumé)
+- Languages & tools: Python, R, Java, SQL, Git, LaTeX.
+- Quantitative: Monte Carlo pricing, Black-Scholes & Greeks, risk-neutral valuation, implied/realized vol, Markov & Poisson processes.
+- ML & data: PyTorch, XGBoost, scikit-learn, pandas/NumPy, WRDS, walk-forward backtesting, transaction-cost modeling.
+
+## quant-universe.com (fetched 2026-10-21)
+- "Quant Universe: Interview Prep Terminal", a vanilla-JS single-page app on Vercel with Supabase auth.
+- The landing page states 530 curated problems, 12 systems (topic roadmap), 10 firm OA simulations and 24 trading games. An older résumé says "530+ interview questions, 62 advanced quantitative problems, and interactive market-making games".
+- Features: question bank, spaced repetition, progress tracking, market-making and trading games, and firm profiles.
+
+## Public code (GitHub ap4475-stack, verified 2026-10-21)
+- https://github.com/ap4475-stack/krauss-ml-statarb: the ML stat-arb pipeline reproducing Krauss et al. (2017).
+- https://github.com/ap4475-stack/kraus_final_sub: the final submission, with a cost-aware no-trade band and walk-forward backtests on the S&P 500.

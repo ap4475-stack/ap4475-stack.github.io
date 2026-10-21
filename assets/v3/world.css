@@ -1,0 +1,70 @@
+/* v3 world (@world): the fixed survey map behind every site, plus the map key. Consumes base.css tokens only. */
+.world { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: var(--paper); overflow: hidden; }
+.world canvas { display: block; width: 100%; height: 100%; }
+.world-static { position: absolute; inset: 0; display: none; }
+.world.is-static canvas { display: none; }
+.world.is-static .world-static { display: block; }
+.world-static svg { display: block; width: 100%; height: 100%; }
+/* desktop: the whole sheet sits in the right 55%, beside the content column */
+@media (min-width: 900px) { .world-static svg { position: absolute; left: 45%; width: 55%; padding: calc(var(--nav-h) + 16px) 24px 24px; box-sizing: border-box; } }
+.world-static path, .world-static rect, .world-static circle { fill: none; vector-effect: non-scaling-stroke; }
+.world-static .c1 { stroke: var(--contour); stroke-width: 1; }
+.world-static .c2 { stroke: var(--contour-2); stroke-width: 1.6; }
+.world-static .gr { stroke: var(--sea); stroke-width: 0.8; opacity: 0.22; }
+.world-static .nl { stroke: var(--ink-2); stroke-width: 1.2; }
+.world-static .here { stroke: var(--rust); stroke-width: 2; }
+.world-static .here-dot { fill: var(--rust); stroke: none; }
+@media (max-width: 899px) { .world { opacity: 0.45; } }
+
+/* map key: a legend card bottom right; a button plus sheet on small screens */
+.map-key { position: fixed; right: clamp(12px, 2vw, 24px); bottom: clamp(12px, 2vw, 24px); z-index: 15; font: 400 0.75rem/1.3 var(--mono); color: var(--ink); }
+.map-key-panel {
+  background: var(--paper); border: 1px solid var(--contour); border-radius: 12px; box-shadow: 0 1px 2px rgb(13 17 23 / 0.04), 0 12px 32px -12px rgb(13 17 23 / 0.12);
+  padding: 12px 12px 8px; width: 236px;
+}
+.map-key-title {
+  display: flex; justify-content: space-between; gap: 8px; margin: 0 0 6px; padding: 0 4px 8px; border-bottom: 1px solid var(--contour);
+  font: 500 0.6875rem/1.2 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink);
+}
+.map-key-title .muted { font-weight: 400; letter-spacing: 0.04em; text-transform: none; }
+.map-key ol { list-style: none; margin: 0; padding: 0; }
+.map-key a {
+  display: grid; grid-template-columns: 12px 20px 1fr; align-items: center; gap: 6px; min-height: 28px; padding: 2px 4px;
+  color: var(--ink-2); text-decoration: none; border-radius: 6px;
+}
+.map-key a:hover { color: var(--ink); background: var(--paper-2); }
+.map-key .n { font-variant-numeric: tabular-nums; }
+.map-key .mk { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--contour-2); box-sizing: border-box; }
+.map-key-btn { display: none; }
+
+/* "you are here": follows html[data-active] (site.js), so it works even before world.js runs */
+html[data-active="base"] .map-key a[href="#base"],
+html[data-active="live-field"] .map-key a[href="#live-field"],
+html[data-active="fault-lines"] .map-key a[href="#fault-lines"],
+html[data-active="cone"] .map-key a[href="#cone"],
+html[data-active="pipeline"] .map-key a[href="#pipeline"],
+html[data-active="reservoir"] .map-key a[href="#reservoir"],
+html[data-active="settlements"] .map-key a[href="#settlements"],
+html[data-active="survey-office"] .map-key a[href="#survey-office"] { color: var(--ink); font-weight: 500; }
+html[data-active="base"] .map-key a[href="#base"] .mk,
+html[data-active="live-field"] .map-key a[href="#live-field"] .mk,
+html[data-active="fault-lines"] .map-key a[href="#fault-lines"] .mk,
+html[data-active="cone"] .map-key a[href="#cone"] .mk,
+html[data-active="pipeline"] .map-key a[href="#pipeline"] .mk,
+html[data-active="reservoir"] .map-key a[href="#reservoir"] .mk,
+html[data-active="settlements"] .map-key a[href="#settlements"] .mk,
+html[data-active="survey-office"] .map-key a[href="#survey-office"] .mk { border: 2px solid var(--rust); background: var(--rust); box-shadow: inset 0 0 0 2px var(--paper); }
+.map-key a[aria-current="location"] .nm::after { content: "you are here"; display: block; font-size: 0.625rem; letter-spacing: 0.06em; color: var(--rust); font-weight: 400; }
+
+@media (max-width: 899px) {
+  .map-key.is-ready .map-key-btn {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; cursor: pointer;
+    font: 500 0.75rem var(--mono); color: var(--ink); background: var(--paper); border: 1px solid var(--contour-2);
+    border-radius: 10px; box-shadow: 0 6px 20px -8px rgb(13 17 23 / 0.18);
+  }
+  .map-key-btn .mk { border: 2px solid var(--rust); }
+  .map-key-now { color: var(--ink-2); font-weight: 400; }
+  .map-key.is-ready .map-key-panel { display: none; position: absolute; right: 0; bottom: 56px; width: min(300px, calc(100vw - 24px)); }
+  .map-key.is-ready.is-open .map-key-panel { display: block; }
+  .map-key a { min-height: 44px; }
+}

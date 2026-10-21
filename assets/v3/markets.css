@@ -1,0 +1,96 @@
+/* v3 markets lane (@markets): sites 01 to 04. Scoped to .mk-* classes; consumes base.css tokens only. */
+.mk-sheet { width: min(100%, 620px); }
+.mk-sheet .d2 { margin: 12px 0 0; }
+.mk-sheet .ref { flex-wrap: wrap; row-gap: 2px; }
+.mk-sheet .ref b { white-space: nowrap; flex: none; }
+.mk-lede { margin: 16px 0 22px; max-width: 58ch; }
+.mk-sub { display: block; font: 400 0.75rem/1.5 var(--mono); color: var(--ink-2); margin-top: 2px; }
+.mk-warn-t { color: var(--warn); }
+.mk-sheet .facts strong.mk-warn-t { color: var(--warn); }
+
+.mk-fig { margin: 28px 0 0; }
+.mk-cap-h { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font: 500 0.875rem/1.4 var(--sans); margin-bottom: 10px; }
+.mk-cap-h .mono { font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.mk-cap { margin-top: 10px; font-size: 0.8125rem; line-height: 1.55; color: var(--ink-2); }
+.mk-real { font: 500 0.6875rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--sea); border: 1px solid var(--sea); border-radius: 4px; padding: 3px 5px; margin-right: 6px; }
+.mk-plot { width: 100%; }
+.mk-plot svg { display: block; width: 100%; height: auto; overflow: visible; }
+.mk-fallback { margin: 0; padding: 14px 16px; background: var(--paper-2); font: 400 0.8125rem/1.6 var(--mono); }
+
+.mk-chips { margin-top: 24px; }
+.mk-links { margin: 18px 0 0; font-size: 0.8125rem; }
+.mk-note { margin: 10px 0 0; font-size: 0.8125rem; color: var(--ink-2); }
+
+/* summary table */
+.mk-tablewrap { margin-top: 22px; overflow-x: auto; }
+.mk-table { width: 100%; border-collapse: collapse; font: 400 0.8125rem/1.4 var(--mono); font-variant-numeric: tabular-nums; }
+.mk-table th, .mk-table td { padding: 8px 8px 8px 0; border-bottom: 1px solid var(--contour); text-align: right; white-space: nowrap; }
+.mk-table th:first-child, .mk-table td:nth-child(2), .mk-table thead th:nth-child(2) { text-align: left; }
+.mk-table thead th { font-weight: 500; font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); border-bottom-color: var(--contour-2); }
+.mk-table tbody th { font-weight: 500; }
+
+/* model legend (The Cone) */
+.mk-legend { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 8px; font-size: 0.9375rem; }
+.mk-legend li { position: relative; padding-left: 30px; }
+.mk-legend b { font-weight: 600; margin-right: 6px; }
+.mk-key { position: absolute; left: 0; top: 0.2em; font: 500 0.75rem/1.4 var(--mono); color: var(--ink-2); }
+
+/* SVG atoms */
+.mk-plot text { font-family: var(--mono); fill: var(--ink); }
+.mk-t { font-size: 12px; }
+.mk-tick { font-size: 10.5px; fill: var(--ink-2) !important; }
+.mk-axt { font-size: 10.5px; letter-spacing: 0.04em; fill: var(--ink-2) !important; }
+.mk-hk { font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--ink-2) !important; }
+.mk-big { font-size: 30px; font-weight: 500; }
+.mk-verdict { font-size: 10.5px; letter-spacing: 0.04em; fill: var(--sea) !important; }
+.mk-bt { font-size: 12px; font-weight: 500; }
+.mk-plot .mk-fill-warn { fill: var(--warn) !important; }
+.mk-grid { stroke: var(--contour); stroke-width: 1; }
+.mk-axis, .mk-zero { stroke: var(--contour-2); stroke-width: 1; }
+.mk-zero { stroke-width: 1.5; }
+.mk-track { stroke: var(--contour); stroke-width: 4; stroke-linecap: round; }
+.mk-diag, .mk-ref { stroke: var(--contour-2); stroke-width: 1.25; stroke-dasharray: 4 4; }
+.mk-break { stroke: var(--ink-2); stroke-width: 1.25; stroke-dasharray: 3 3; }
+.mk-shade { fill: var(--paper-2); }
+.mk-cell { fill: none; stroke: var(--contour-2); }
+.mk-ink { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.mk-sea { stroke: var(--sea); }
+.mk-rust { stroke: var(--rust); }
+.mk-warn { stroke: var(--warn); }
+.mk-w2 { stroke-width: 2; }
+.mk-w4 { stroke-width: 4; }
+.mk-key-ln { stroke-width: 2.5; }
+.mk-path { stroke: var(--contour-2); stroke-width: 0.9; opacity: 0.7; }
+.mk-band { fill: var(--sea); fill-opacity: 0.14; stroke: none; }
+.mk-dot { fill: var(--sea); fill-opacity: 0.85; stroke: var(--paper); stroke-width: 1.5; }
+.mk-dot-rust { fill: var(--rust); }
+.mk-box { fill: var(--paper); stroke: var(--contour-2); stroke-width: 1; }
+.mk-box-hi { stroke: var(--sea); stroke-width: 1.5; }
+.mk-box-warn { stroke: var(--warn); stroke-dasharray: 4 3; }
+.mk-edge { stroke: var(--ink-2); stroke-width: 1.4; }
+.mk-ahead { fill: var(--ink-2); }
+.mk-illus { fill: none; stroke: var(--ink-2); stroke-dasharray: 3 2; }
+.mk-illus-t { font-size: 10px; letter-spacing: 0.08em; fill: var(--ink-2) !important; }
+
+/* pen-plotter reveal: markets.js adds .mk-armed (only when motion is allowed), then .mk-on in view */
+.mk-armed .mk-ink { stroke-dasharray: 1 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s cubic-bezier(.45, 0, .25, 1) var(--mk-d, 0s); }
+.mk-armed.mk-on .mk-ink { stroke-dashoffset: 0; }
+.mk-armed .mk-fade, .mk-armed .mk-ahead { opacity: 0; transition: opacity 0.6s ease var(--mk-d2, 1.1s); }
+.mk-armed.mk-on .mk-fade, .mk-armed.mk-on .mk-ahead { opacity: 1; }
+.mk-armed .mk-path.mk-ink { opacity: 0.7; }
+@media (prefers-reduced-motion: reduce) {
+  .mk-armed .mk-ink { stroke-dasharray: none; stroke-dashoffset: 0; }
+  .mk-armed .mk-fade, .mk-armed .mk-ahead { opacity: 1; }
+}
+@media print {
+  .mk-armed .mk-ink { stroke-dasharray: none; stroke-dashoffset: 0; }
+  .mk-armed .mk-fade, .mk-armed .mk-ahead { opacity: 1; }
+}
+/* paper halo so labels stay legible where they cross a line */
+.mk-plot text { paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+@media (max-width: 480px) {
+  .mk-table { font-size: 0.75rem; }
+  .mk-table th, .mk-table td { white-space: normal; padding-right: 6px; }
+  .mk-table tbody th { white-space: nowrap; }
+}
+@media (max-width: 480px) { .mk-table td:nth-child(2) { white-space: nowrap; } }

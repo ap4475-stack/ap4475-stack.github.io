@@ -22,6 +22,9 @@ Each assignment goes to one bot. A bot edits only the files in its lane. Cross-l
 | Hero | `@build-hero` | 3D order-book terrain hero | `partials/hero.html`, `assets/terrain/` |
 | Story | `@build-story` | Exhibit A: the scroll-told lobkit story | `partials/lobkit-story.html`, `assets/story/` |
 | Terminal | `@build-terminal` | The alternate terminal mode | `terminal/` |
+| v3 World | `@world` | v3 fixed contour-map world, camera flight, map key | `partials/v3-world.html`, `assets/v3/world.*` |
+| v3 Markets | `@markets` | v3 sites 01 to 04 (Kalshi, stat-arb, SPAC warrants, OMS) | `partials/v3-markets.html`, `assets/v3/markets.*` |
+| v3 Field | `@field` | v3 sites 05 to 07 (Lionheart, builds, survey office) | `partials/v3-field.html`, `assets/v3/field.*` |
 | Design QA | `@qa-design` | Read-only review: contrast, responsive, motion, slop check | nothing (reports only) |
 | Fact check | `@qa-facts` | Read-only review: every claim and number traces to a source in CONTENT.md; every link resolves | nothing (reports only) |
 

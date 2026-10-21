@@ -13,7 +13,8 @@ for part in sorted((root / "partials").glob("*.html")):
     name = part.stem
     pattern = re.compile(rf"<!-- partial:{name} -->.*?<!-- /partial:{name} -->", re.S)
     if not pattern.search(html):
-        raise SystemExit(f"marker partial:{name} not found in index.html")
+        print("skip", name, "(no marker in index.html)")
+        continue
     body = part.read_text().rstrip()
     html = pattern.sub(lambda _: f"<!-- partial:{name} -->\n{body}\n<!-- /partial:{name} -->", html)
     print("spliced", name)

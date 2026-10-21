@@ -1,0 +1,112 @@
+/* v3 "Basin Atlas": shared tokens and base layout. Lanes consume these; only the coordinator edits this file. */
+:root {
+  --paper: #FBFBFA; --paper-2: #F1F2F4; --ink: #0D1117; --ink-2: #59616E;
+  --rust: #1D4ED8; --sea: #0F7A55; --contour: #DCE0E5; --contour-2: #AEB5BF; --warn: #C4122F;
+  --display: "Geist", "Inter", system-ui, sans-serif;
+  --sans: "Geist", "Inter", system-ui, sans-serif;
+  --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --nav-h: 60px;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --paper: #0B0E13; --paper-2: #131820; --ink: #E8EBEF; --ink-2: #9AA3AF;
+  --rust: #7B93FF; --sea: #3CC08A; --contour: #1E252F; --contour-2: #384352; --warn: #FF6B7A;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0B0E13; --paper-2: #131820; --ink: #E8EBEF; --ink-2: #9AA3AF;
+    --rust: #7B93FF; --sea: #3CC08A; --contour: #1E252F; --contour-2: #384352; --warn: #FF6B7A;
+    color-scheme: dark;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: calc(var(--nav-h) + 8px); }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1rem/1.62 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: var(--rust); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; border-radius: 4px; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 12px; z-index: 50; background: var(--paper); padding: 8px 12px; }
+
+/* type */
+.d1, .d2, .d3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.045em; margin: 0; }
+.d1 { font-size: clamp(2.75rem, 6.6vw, 5.25rem); line-height: 0.98; }
+.d2 { font-size: clamp(2rem, 4.4vw, 3.25rem); line-height: 1.04; }
+.d3 { font-size: clamp(1.75rem, 3vw, 2.25rem); line-height: 1.1; }
+.ref {
+  font: 500 0.75rem/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2);
+  display: inline-flex; gap: 10px; align-items: center;
+}
+.ref b { color: var(--rust); font-weight: 500; }
+.mono { font-family: var(--mono); }
+.muted { color: var(--ink-2); }
+.tag-illus {
+  display: inline-block; font: 500 0.6875rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase;
+  border: 1px dashed var(--ink-2); color: var(--ink-2); border-radius: 4px; padding: 4px 6px;
+}
+
+/* nav */
+.atlas-nav {
+  position: fixed; inset: 0 0 auto 0; height: var(--nav-h); z-index: 20; display: flex; align-items: center; gap: 16px;
+  padding: 0 clamp(16px, 4vw, 40px); background: color-mix(in srgb, var(--paper) 86%, transparent);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--contour);
+}
+.atlas-nav .brand { font: 500 0.875rem var(--mono); color: var(--ink); text-decoration: none; margin-right: auto; white-space: nowrap; }
+.atlas-nav .brand b { color: var(--rust); font-weight: 500; }
+.atlas-nav a.nl { font: 400 0.8125rem var(--mono); color: var(--ink-2); text-decoration: none; padding: 12px 6px; }
+.atlas-nav a.nl:hover { color: var(--ink); }
+.atlas-nav .theme {
+  width: 44px; height: 44px; border-radius: 8px; border: 1px solid var(--contour); background: var(--paper);
+  color: var(--ink); cursor: pointer; font-size: 1rem; flex: none;
+}
+@media (max-width: 640px) { .atlas-nav a.nl.opt { display: none; } }
+@media (max-width: 480px) { .atlas-nav .brand-x { display: none; } .atlas-nav { gap: 8px; } }
+
+/* page frame: content column over the fixed world */
+.atlas { position: relative; z-index: 2; }
+.site { min-height: 100vh; padding: calc(var(--nav-h) + 48px) clamp(16px, 4vw, 40px) 64px; display: flex; align-items: center; }
+.sheet {
+  width: min(100%, 620px); background: var(--paper); border: 1px solid var(--contour); border-radius: 12px;
+  padding: clamp(20px, 3vw, 36px); box-shadow: 0 1px 2px rgb(13 17 23 / 0.04), 0 12px 32px -12px rgb(13 17 23 / 0.10);
+}
+@media (max-width: 900px) {
+  .site { min-height: auto; padding-top: calc(var(--nav-h) + 32px); }
+  .sheet { width: 100%; }
+}
+
+/* shared atoms */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 8px;
+  font: 500 0.875rem var(--sans); text-decoration: none; border: 1px solid var(--contour-2); color: var(--ink); background: var(--paper);
+}
+.btn.primary { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.btn:hover { transform: translateY(-1px); }
+.facts { margin: 0; border-top: 1px solid var(--contour-2); }
+.facts > div { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--contour); align-items: baseline; }
+.facts dt { font: 500 0.6875rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.facts dd { margin: 0; }
+.facts strong { font: 500 1.25rem var(--mono); font-variant-numeric: tabular-nums; margin-right: 6px; }
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.chips li { font: 400 0.75rem var(--mono); background: var(--paper-2); border-radius: 6px; padding: 3px 8px; }
+@media (max-width: 480px) { .facts > div { grid-template-columns: 1fr; gap: 2px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* hero (coordinator) */
+.hero-sheet { width: min(100%, 720px); }
+.hero-sheet .d1 { margin: 18px 0 22px; }
+.hero-lede { font-size: clamp(1.125rem, 1.8vw, 1.3rem); max-width: 54ch; margin: 0 0 18px; }
+.hero-meta { font-size: 0.8125rem; line-height: 1.7; color: var(--ink-2); margin: 0 0 26px; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+.hero-how { font-size: 0.75rem; margin: 0; }
+.atlas-foot {
+  position: relative; z-index: 2; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  padding: 24px clamp(16px, 4vw, 40px) 40px; font-size: 0.75rem; border-top: 1px solid var(--contour);
+  background: var(--paper);
+}
+
+:root[data-theme="dark"] .sheet { box-shadow: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sheet { box-shadow: none; } }
