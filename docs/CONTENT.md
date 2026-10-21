@@ -107,3 +107,34 @@ Source file: `~/Documents/Aviv_Pinto_Resume_.pdf`, supplied by Aviv for the site
 ## Public code (GitHub ap4475-stack, verified 2026-10-21)
 - https://github.com/ap4475-stack/krauss-ml-statarb: the ML stat-arb pipeline reproducing Krauss et al. (2017).
 - https://github.com/ap4475-stack/kraus_final_sub: the final submission, with a cost-aware no-trade band and walk-forward backtests on the S&P 500.
+
+---
+
+# v4 additions (2026-10-21)
+
+## Kalshi research story
+Sources: `~/Documents/Kalshi_Bot_Review.md` (R, reviewed 2026-10-14), `~/work/kalshibot/STATUS.md` (S), `research/strategy/STR-002-no-edge.md`, `research/desk/LEDGER.md`, `reports/desk/horizon*.json|txt`.
+- Hypothesis (R:89-107): late-window cheap YES contracts look underpriced; break-even win rate about 12%.
+- First test (R:111-130): 13 usable days of 1-minute candles (1,087 windows); best of about 18 variants made +3.9c per trade on 459 trades, p ≈ 0.02. Bonferroni bar ≈ 0.003. Slippage table (R:167-171): +0c +3.9 (CI +0.6 to +7.3, p 0.02); +1c +2.9 (p 0.09); +2c +1.9 (p 0.26); +4c −0.1 (p 0.96).
+- Rebuilt desk: decision-time test, 5-minute horizon on KXBTCD, 99 price buckets, 600,532,052 contracts, 506 expiries, 0 survivors, worst −3.7c at 42c (`horizon_btc.txt/json`). 15 and 30 minutes: −3.2c and −4.9c.
+- Shuffle control: worst gap −4.8c real vs −48.7c shuffled; survivors 0 vs 91 (S:135-140).
+- Look-ahead bug: last price observed a median 851s before close gave a fake +38.9c edge (S:144-152).
+- Retraction: wing quoting +2.19c on 17 expiries became −0.03c on 209 (STR-002:41-48).
+- Order books: 387,697 events, 100.000% valid, 0 sequence defects; 118 tests (S:70-87).
+- Queue imbalance AUC 0.640 on 32,073 observations; taker +0.42c gross, −4.10c net (STR-001:33-44).
+- Weather: 272 independent expiries vs a 384 floor, worst gap +6.9c (S:178-185).
+- Next steps (R:243-280; S:193-194, 407-410): pre-registered walk-forward rerun, day-clustered bootstrap, +0 to +3c slippage, 700+ forward trades before sizing.
+- Live: 7 settled live trades (R:30), shown only as "statistically uninformative". No P&L shown.
+
+## quant-universe (captured 2026-10-21, logged out)
+- 530 problems (167 easy, 259 medium, 104 hard); Advanced: 62 problems in 7 parts.
+- 12 systems (Counting & Combinatorics … Poisson Processes, Interview Classics), unlocked at ≥60%.
+- Games tab: 17 cards (Make Me a Market, Dice Market Making, Optiver 80-in-8, …). The splash says "24 trading games" and the boot log says 25, so the site uses 17 (what the tab shows).
+- Firms: 10 (Optiver, Jane Street, Citadel, SIG, Akuna, IMC, Flow Traders, HRT, Jump, Five Rings).
+- Vercel, Supabase, KaTeX; spaced repetition, progress tracking, JSON export.
+
+## Burger Quest NYC
+- Live: https://burger-quest-chi.vercel.app (200 on 2026-10-21). Repo ap4475-stack/burger-quest is private.
+- Solo; 184 commits (162 + 22 under his handle); about 38,457 lines; 18 Supabase migrations; 67 seeded NYC spots; 0 automated tests.
+- Stack: Next.js 15.5, React 19, TypeScript, Supabase (Postgres + RLS + auth), Google Maps/Places, Gemini, OneSignal, Vercel crons.
+- Do not cite the landing-page "burgers eaten" counter (hard-coded per PREVIEW_NOTES.md).
