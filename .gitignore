@@ -1,0 +1,7 @@
+.agent-owner
+.env
+.env.*
+.DS_Store
+node_modules/
+.claude-commit*
+docs/PRIVATE.md

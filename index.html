@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aviv Pinto</title>
+  <meta name="description" content="Aviv Pinto, Columbia Mathematics and Statistics. Market microstructure models, trading tools and AI agents.">
+  <meta name="theme-color" content="#0b0e11">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0e11'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' fill='%2326a69a' text-anchor='middle'%3Eap%3C/text%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js');window.__failsafe=setTimeout(function(){document.documentElement.classList.remove('js')},3000);try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <a class="skip" href="#work">Skip to work</a>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">aviv pinto</a>
+      <nav aria-label="Sections">
+        <a href="#work">Work</a>
+        <a class="opt" href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch to light theme">◐</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <p class="label reveal">Columbia University · Mathematics &amp; Statistics</p>
+      <h1 class="reveal">I build models of markets, and the tools to test them honestly.</h1>
+      <p class="lede reveal">Order-book simulation, calibration and leakage controls on the quant side. Tool-using AI agents on the engineering side. Seeking quant trading and research internships, Summer 2027.</p>
+      <ul class="facts reveal" aria-label="Quick facts">
+        <li><span>class of</span> 2028</li>
+        <li><span>lang</span> Python · Java · SQL</li>
+        <li><span>focus</span> microstructure</li>
+      </ul>
+      <div class="cta reveal">
+        <a class="btn primary" href="#work">See the work</a>
+        <a class="btn" href="https://github.com/ap4475-stack" rel="noopener">GitHub</a>
+      </div>
+    </section>
+
+    <section id="work" class="wrap section">
+      <div class="section-head">
+        <p class="label">01 · Selected work</p>
+        <h2>What I have built</h2>
+      </div>
+
+      <div class="grid">
+        <article class="card reveal feature">
+          <div class="meta"><span class="idx">01</span><span class="tag">Research</span><span>2026</span></div>
+          <h3>lobkit</h3>
+          <p class="one">Rebuilds Kalshi limit-order books from L2 data and estimates the chance that a resting order fills, calibrated against a conservative lower-bound fill truth. Every number is tagged observed, derived, estimated or assumed.</p>
+          <div class="metric">
+            <div><strong data-count="0.0502" data-dp="4">0.0502</strong><span>Brier score, vs 0.0539 base rate</span></div>
+            <div><strong data-count="9995">9,995</strong><span>simulated orders, 209 markets</span></div>
+            <div><strong>0.67–0.70</strong><span>AUC on a held-out half</span></div>
+          </div>
+          <p class="scope">Leakage control: pair each prediction with another level's outcome and Brier skill over the base rate falls from +0.069 to −0.122, as it must in a leak-free pipeline. Limit stated up front: 44.6% of orders are ambiguous from L2 data alone.</p>
+          <ul class="chips"><li>Python</li><li>market microstructure</li><li>calibration</li><li>119 tests</li></ul>
+          <p class="links"><span class="muted">Code private · walkthrough on request</span></p>
+        </article>
+
+        <article class="card reveal">
+          <div class="meta"><span class="idx">02</span><span class="tag live">Live</span><span class="tag">Team</span><span>2026</span></div>
+          <h3>CallIt</h3>
+          <p class="one">A group prediction app. A private group posts a call, everyone answers once, and the group sees who called it.</p>
+          <div class="metric"><div><strong>5</strong><span>person team · 300+ commits</span></div></div>
+          <p class="scope">My role: marketing manager, the CallIt coin, and UI design of the game flow.</p>
+          <ul class="chips"><li>Next.js</li><li>Supabase</li><li>product design</li></ul>
+          <p class="links"><a href="https://call-it.app" rel="noopener">call-it.app ↗</a><a href="https://app.call-it.app" rel="noopener">app ↗</a></p>
+        </article>
+
+        <article class="card reveal">
+          <div class="meta"><span class="idx">03</span><span class="tag">Build</span><span>2026</span></div>
+          <h3>Nudge</h3>
+          <p class="one">An AI receivables agent. It follows up on unpaid invoices over WhatsApp and Gmail, logs promises to pay and disputes, and hands off to a human when needed.</p>
+          <div class="metric"><div><strong>60+</strong><span>tests · ~8.3k lines TypeScript</span></div></div>
+          <ul class="chips"><li>Claude tool use</li><li>Next.js 15</li><li>Postgres RLS</li><li>WhatsApp API</li></ul>
+          <p class="links"><span class="muted">Code private</span></p>
+        </article>
+
+        <article class="card reveal">
+          <div class="meta"><span class="idx">04</span><span class="tag">Build</span><span>2026</span></div>
+          <h3>Research Agent</h3>
+          <p class="one">A local research workspace that stores evidence and uncertainty before it ranks anything. Unknown is never scored as low.</p>
+          <div class="metric"><div><strong data-count="485">485</strong><span>tests in 42 files · ~16.4k lines</span></div></div>
+          <ul class="chips"><li>Python</li><li>evidence model</li><li>LLM pipelines</li></ul>
+          <p class="links"><span class="muted">Code private</span></p>
+        </article>
+
+        <article class="card reveal">
+          <div class="meta"><span class="idx">05</span><span class="tag">Tool</span><span>2026</span></div>
+          <h3>quant-roles</h3>
+          <p class="one">Pulls quant roles from public job-board APIs into one list and checks each link before it ships.</p>
+          <div class="metric"><div><strong data-count="144">144</strong><span>roles across 26 firms · Aug 28 snapshot</span></div></div>
+          <ul class="chips"><li>Python</li><li>public APIs</li><li>link checking</li></ul>
+          <p class="links"><span class="muted">Code private</span></p>
+        </article>
+
+        <article class="card reveal">
+          <div class="meta"><span class="idx">06</span><span class="tag">Tool</span><span>2026</span></div>
+          <h3>Orchestra</h3>
+          <p class="one">A cost-aware multi-agent runner. A frontier model plans, cheap local or cloud models do the work, and a SQLite ledger records every call.</p>
+          <div class="metric"><div><strong>2</strong><span>max delegation depth, by design</span></div></div>
+          <ul class="chips"><li>Python</li><li>Ollama</li><li>SQLite</li></ul>
+          <p class="links"><span class="muted">Code private</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="wrap section">
+      <div class="section-head">
+        <p class="label">02 · Skills</p>
+        <h2>What I work with</h2>
+      </div>
+      <dl class="skills reveal">
+        <div><dt>Languages</dt><dd>Python · Java · SQL · TypeScript</dd></div>
+        <div><dt>Stats / ML</dt><dd>PyTorch · XGBoost · H2O · calibration · held-out validation</dd></div>
+        <div><dt>Data</dt><dd>WRDS · order-book data · Postgres</dd></div>
+        <div><dt>Agents</dt><dd>Claude tool use · multi-agent orchestration · local models</dd></div>
+      </dl>
+    </section>
+
+    <section id="about" class="wrap section">
+      <div class="section-head">
+        <p class="label">03 · About</p>
+        <h2>How I work</h2>
+      </div>
+      <div class="about reveal">
+        <p>I study Mathematics and Statistics at Columbia and graduate in May 2028.</p>
+        <p>I care most about whether a number is true. My models report what they cannot know, run a control that should destroy the signal, and choose parameters on held-out data.</p>
+        <p>I build with AI agents every day, and I build the systems that keep them in check: lanes, ledgers and reviewers.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="wrap section">
+      <div class="section-head">
+        <p class="label">04 · Contact</p>
+        <h2>Get in touch</h2>
+      </div>
+      <p class="reveal contact-line">The fastest way to reach me is <a href="https://github.com/ap4475-stack" rel="noopener">GitHub</a>. Code walkthroughs of the private projects are available on request.</p>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <span>© 2026 Aviv Pinto</span>
+    <span class="muted">Static HTML · no analytics</span>
+  </footer>
+
+  <script src="assets/main.js" defer></script>
+</body>
+</html>
