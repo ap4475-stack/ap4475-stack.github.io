@@ -44,6 +44,15 @@
   margin-left: -20px; padding: 16px 20px 20px; border-radius: 8px;
   background: var(--bg);
 }
+@media (min-width: 720px) {
+  /* feather the scrim so its edge never cuts the terrain */
+  .terrain-text {
+    width: fit-content; max-width: 628px; padding-right: 72px; border-radius: 0;
+    background:
+      linear-gradient(0deg, transparent 0, var(--bg) 24px) left bottom / 100% 100% no-repeat,
+      linear-gradient(90deg, var(--bg) 0, var(--bg) calc(100% - 72px), transparent 100%);
+  }
+}
 .terrain-text:focus-within { opacity: 1 !important; transform: none !important; visibility: visible !important; }
 .hero-terrain h1 { font-size: clamp(2.5rem, 7vw, 5.25rem); line-height: 1; margin: 0; }
 .hero-terrain .lede { margin: 20px 0 24px; max-width: 48ch; }

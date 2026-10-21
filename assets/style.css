@@ -131,7 +131,7 @@ h1, h2, h3 { font-family: var(--head); font-weight: 600; margin: 0; letter-spaci
 }
 @media (min-width: 880px) {
   .exhibit { grid-template-columns: 5fr 6fr; gap: 56px; align-items: center; }
-  .exhibit:nth-of-type(even) .ex-visual { order: -1; }
+  .exhibit.flip .ex-visual { order: -1; }
 }
 .ex-text { display: flex; flex-direction: column; gap: 16px; }
 .ex-visual { min-width: 0; }

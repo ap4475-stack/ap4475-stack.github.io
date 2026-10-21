@@ -11,6 +11,8 @@ Rule: every claim on the page traces to a source below. If it is not here, it is
 | Expected graduation May 2028; recruiting for Summer 2027 | `profile.json` |
 | Tracks: quant trading, quant research, systematic strategy | `profile.json` |
 | Languages: Python, Java, SQL. Tools: PyTorch, XGBoost, H2O, WRDS | `profile.json` |
+| TypeScript (in Skills) | Nudge codebase, ~8.3k lines |
+| lobkit 119 tests | `grep -c 'def test_'` on 2026-10-21 (STATUS.md's 118 is from its 2026-09-02 snapshot) |
 | GitHub `ap4475-stack` (name "Aviv Pinto", 4 public repos) | `gh api users/ap4475-stack`, 2026-10-20 |
 | Location | not on the page until Aviv confirms |
 

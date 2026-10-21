@@ -235,7 +235,7 @@
     if (c === 0) { lab = 'resting at'; val = '48¢, back of queue'; }
     else if (c === 1) {
       var a = 1 - drain * DRAIN_MAX, p = a > 0.8 ? 0.014 : a > 0.6 ? 0.143 : a > 0.4 ? 0.238 : a > 0.2 ? 0.346 : 0.449;
-      lab = 'P(fill in 60 s), illustrative'; val = p.toFixed(3);
+      lab = 'P(fill), example bin values'; val = p.toFixed(3);
     } else if (c === 2) { lab = 'Brier vs 0.0539 base'; val = '0.0502'; }
     else if (c === 3) { lab = 'skill, ' + (S < 0.5 ? 'real' : 'shuffled'); val = fmtSkill(S < 0.5 ? 0.069 : -0.122); cls += S < 0.5 ? ' pos-t' : ' neg-t'; }
     else { lab = 'point fill estimates'; val = 'not trusted'; cls += ' neg-t'; }
@@ -260,7 +260,7 @@
     s += '<rect class="frame" x="0.5" y="0.5" width="' + (g.W - 1) + '" height="' + (g.H - 1) + '" rx="8"/>';
     s += '<line class="rule" x1="16" x2="' + (g.W - 16) + '" y1="52" y2="52"/>';
     s += hud(g, t, drain, S);
-    s += txt(16, g.src, 'src', L > 0.5 ? 'ILLUSTRATIVE BOOK · sizes made up' : 'REAL DATA · lobkit, snapshot 2026-09-02');
+    s += txt(16, g.src, 'src', L > 0.5 ? 'ILLUSTRATIVE BOOK · sizes made up' : S > 0.02 ? 'REAL DATA + ILLUSTRATIVE SHUFFLE POINTS' : 'REAL DATA · lobkit, snapshot 2026-09-02');
     s += axes(g, A * C, diag);
     s += ladder(g, t, L, tilt, drain);
     s += points(g, t, S, C);

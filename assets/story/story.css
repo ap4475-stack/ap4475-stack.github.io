@@ -140,7 +140,7 @@
     position: sticky; top: var(--story-nav, 57px); z-index: 3;
     margin: 0 -16px; padding: 8px; background: var(--bg); border-bottom: 1px solid var(--line);
   }
-  .exhibit-story.story-scrub .story-tilt { width: min(100%, calc(54vh * var(--story-ar, 0.87))); }
+  .exhibit-story.story-scrub .story-tilt { width: min(100%, calc(42vh * var(--story-ar, 0.87))); }
   .exhibit-story.story-scrub .story-rail { display: none; }
   .exhibit-story.story-scrub .story-step {
     display: block; padding: 16px 0 24px;
