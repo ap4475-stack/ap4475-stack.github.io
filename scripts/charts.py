@@ -14,9 +14,9 @@ BINS = [  # predicted, n, observed
     (0.346, 44, 0.364), (0.449, 33, 0.515), (0.634, 15, 0.600), (0.752, 18, 0.722),
 ]
 
-# quant-roles, QUANT-ROLES.md snapshot of Aug 28 (top 8 of 26 firms, 144 roles)
+# quant-roles, QUANT-ROLES.md snapshot of Aug 28 (top 9 of 26 firms incl. a tie at 5, 144 roles)
 FIRMS = [("Jump Trading", 29), ("IMC Trading", 18), ("Point72", 12), ("AQR", 12),
-         ("Virtu Financial", 8), ("Tower Research", 8), ("DV Trading", 8), ("Qube RT", 5)]
+         ("Virtu Financial", 8), ("Tower Research", 8), ("DV Trading", 8), ("Qube RT", 5), ("Flow Traders", 5)]
 
 
 def calibration(w=420, h=420, pad=44, top=0.8):
@@ -24,16 +24,16 @@ def calibration(w=420, h=420, pad=44, top=0.8):
     sy = lambda v: h - pad - v / top * (h - pad - 12)
     out = [f'<svg class="chart calib" viewBox="0 0 {w} {h}" role="img" aria-labelledby="calib-t calib-d">',
            '<title id="calib-t">lobkit fill calibration</title>',
-           '<desc id="calib-d">Predicted versus observed fill rate in seven bins. Points sit close to the diagonal; '
-           'the worst gap among bins with at least 25 orders is 0.078.</desc>']
+           '<desc id="calib-d">Predicted versus observed fill rate in seven bins. Five of seven bins sit above the diagonal, so the model '
+           'under-predicts fills; the worst gap among bins with at least 25 orders is 0.078.</desc>']
     for t in (0, 0.2, 0.4, 0.6, 0.8):
         out.append(f'<line class="grid" x1="{sx(0):.1f}" y1="{sy(t):.1f}" x2="{sx(top):.1f}" y2="{sy(t):.1f}"/>')
         out.append(f'<line class="grid" x1="{sx(t):.1f}" y1="{sy(0):.1f}" x2="{sx(t):.1f}" y2="{sy(top):.1f}"/>')
         out.append(f'<text class="tick" x="{sx(t):.1f}" y="{h - pad + 18:.1f}" text-anchor="middle">{t:.1f}</text>')
         out.append(f'<text class="tick" x="{pad - 8:.1f}" y="{sy(t) + 4:.1f}" text-anchor="end">{t:.1f}</text>')
-    out.append(f'<line class="diag" x1="{sx(0):.1f}" y1="{sy(0):.1f}" x2="{sx(top):.1f}" y2="{sy(top):.1f}" pathLength="1"/>')
-    pts = " ".join(f"{sx(p):.1f},{sy(o):.1f}" for p, _, o in BINS)
-    out.append(f'<polyline class="curve" points="{pts}" pathLength="1"/>')
+    out.append(f'<line class="diag" x1="{sx(0):.1f}" y1="{sy(0):.1f}" x2="{sx(top):.1f}" y2="{sy(top):.1f}"/>')
+    d = "M" + " L".join(f"{sx(p):.1f},{sy(o):.1f}" for p, _, o in BINS)
+    out.append(f'<path class="curve" d="{d}" pathLength="1"/>')
     for i, (p, n, o) in enumerate(BINS):
         r = 3 + 1.6 * math.log10(n)
         out.append(f'<circle class="pt" style="--i:{i}" cx="{sx(p):.1f}" cy="{sy(o):.1f}" r="{r:.1f}">'
@@ -41,6 +41,8 @@ def calibration(w=420, h=420, pad=44, top=0.8):
     out.append(f'<text class="axis" x="{(sx(0) + sx(top)) / 2:.1f}" y="{h - 6}" text-anchor="middle">predicted fill probability</text>')
     out.append(f'<text class="axis" transform="translate(12 {(sy(0) + sy(top)) / 2:.1f}) rotate(-90)" text-anchor="middle">observed</text>')
     out.append(f'<text class="note" x="{sx(0.46):.1f}" y="{sy(0.36):.1f}">y = x</text>')
+    p0, n0, o0 = BINS[0]
+    out.append(f'<text class="note" x="{sx(p0) + 24:.1f}" y="{sy(o0) - 22:.1f}">n = {n0:,}: under-predicts at the low end</text>')
     out.append('</svg>')
     return "\n".join(out)
 
@@ -49,7 +51,7 @@ def firms(w=420, row=30, label=132):
     h = row * len(FIRMS) + 8
     mx = max(c for _, c in FIRMS)
     out = [f'<svg class="chart bars" viewBox="0 0 {w} {h}" role="img" aria-labelledby="firms-t">',
-           '<title id="firms-t">Roles per firm, top 8 of 26, Aug 28 snapshot</title>']
+           '<title id="firms-t">Roles per firm, top 9 of 26 including a tie, Aug 28 snapshot</title>']
     for i, (name, c) in enumerate(FIRMS):
         y = i * row + 4
         bw = (w - label - 40) * c / mx

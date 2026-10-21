@@ -81,6 +81,8 @@ h1, h2, h3 { font-family: var(--head); font-weight: 600; margin: 0; letter-spaci
 .hero-plot { margin: 0; max-width: 480px; width: 100%; justify-self: center; }
 .hero-plot figcaption, .cap { font: 400 0.8125rem/1.5 var(--mono); color: var(--muted); margin-top: 12px; }
 .hero-plot figcaption .label { display: block; margin-bottom: 4px; }
+.plot-stats { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 10px 0 0; font: 500 0.8125rem var(--mono); color: var(--text); }
+.plot-stats span { color: var(--muted); font-weight: 400; margin-right: 4px; }
 .cta { display: flex; flex-wrap: wrap; gap: 12px; }
 .btn {
   display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px;
@@ -180,7 +182,7 @@ h1, h2, h3 { font-family: var(--head); font-weight: 600; margin: 0; letter-spaci
   display: grid; place-items: center; min-width: 28px; height: 26px; padding: 0 4px; border-radius: 6px;
   background: var(--surface); color: var(--text); font-weight: 500; position: relative;
 }
-.cadence .esc b { background: var(--neg); color: #0b0e11; }
+.cadence .esc b { background: var(--neg); color: var(--panel); }
 .chat { display: flex; flex-direction: column; gap: 10px; }
 .msg { margin: 0; max-width: 80%; padding: 10px 14px; border-radius: 14px; font-size: 0.9375rem; }
 .msg.them { align-self: flex-start; background: var(--surface); border-bottom-left-radius: 4px; }

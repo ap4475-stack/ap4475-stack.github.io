@@ -59,5 +59,5 @@ Contact details, résumé and other personal items stay out until Aviv approves 
 - One line: Pulls open quant roles from public job-board APIs and checks every link.
 - Stack: Python.
 - Metrics: 144 roles across 26 firms in the Aug 28 README snapshot . Re-run `./run.sh` to refresh.
-- Source: `~/work/quant-roles/README.md`.
+- Source: `~/work/quant-roles/QUANT-ROLES.md` (header and table); ATS list from `probe_firm.py`.
 - Link: private.

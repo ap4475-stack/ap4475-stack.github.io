@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap">
-  <link rel="stylesheet" href="assets/style.css?v=4">
+  <link rel="stylesheet" href="assets/style.css?v=5">
 </head>
 <body>
   <a class="skip" href="#work">Skip to work</a>
@@ -37,7 +37,7 @@
         <h1 class="reveal">Predicted <span class="vs">vs.</span> observed.</h1>
         <p class="lede reveal">I'm Aviv Pinto. I build models of markets and the tools that check them, and I show where they break. Seeking quant trading and research internships for Summer 2027.</p>
         <div class="cta reveal">
-          <a class="btn primary" href="#work">See the exhibits</a>
+          <a class="btn primary" href="#lobkit">lobkit: 9,995 orders →</a>
           <a class="btn" href="https://github.com/ap4475-stack" rel="noopener">GitHub</a>
         </div>
       </div>
@@ -45,7 +45,7 @@
         <!-- chart:calibration -->
 <svg class="chart calib" viewBox="0 0 420 420" role="img" aria-labelledby="calib-t calib-d">
 <title id="calib-t">lobkit fill calibration</title>
-<desc id="calib-d">Predicted versus observed fill rate in seven bins. Points sit close to the diagonal; the worst gap among bins with at least 25 orders is 0.078.</desc>
+<desc id="calib-d">Predicted versus observed fill rate in seven bins. Five of seven bins sit above the diagonal, so the model under-predicts fills; the worst gap among bins with at least 25 orders is 0.078.</desc>
 <line class="grid" x1="44.0" y1="376.0" x2="408.0" y2="376.0"/>
 <line class="grid" x1="44.0" y1="376.0" x2="44.0" y2="12.0"/>
 <text class="tick" x="44.0" y="394.0" text-anchor="middle">0.0</text>
@@ -66,8 +66,8 @@
 <line class="grid" x1="408.0" y1="376.0" x2="408.0" y2="12.0"/>
 <text class="tick" x="408.0" y="394.0" text-anchor="middle">0.8</text>
 <text class="tick" x="36.0" y="16.0" text-anchor="end">0.8</text>
-<line class="diag" x1="44.0" y1="376.0" x2="408.0" y2="12.0" pathLength="1"/>
-<polyline class="curve" points="50.4,356.0 109.1,275.4 152.3,245.9 201.4,210.4 248.3,141.7 332.5,103.0 386.2,47.5" pathLength="1"/>
+<line class="diag" x1="44.0" y1="376.0" x2="408.0" y2="12.0"/>
+<path class="curve" d="M50.4,356.0 L109.1,275.4 L152.3,245.9 L201.4,210.4 L248.3,141.7 L332.5,103.0 L386.2,47.5" pathLength="1"/>
 <circle class="pt" style="--i:0" cx="50.4" cy="356.0" r="9.4"><title>predicted 0.014, observed 0.044, n = 9,518</title></circle>
 <circle class="pt" style="--i:1" cx="109.1" cy="275.4" r="6.8"><title>predicted 0.143, observed 0.221, n = 231</title></circle>
 <circle class="pt" style="--i:2" cx="152.3" cy="245.9" r="6.2"><title>predicted 0.238, observed 0.286, n = 98</title></circle>
@@ -78,9 +78,11 @@
 <text class="axis" x="226.0" y="414" text-anchor="middle">predicted fill probability</text>
 <text class="axis" transform="translate(12 194.0) rotate(-90)" text-anchor="middle">observed</text>
 <text class="note" x="253.3" y="212.2">y = x</text>
+<text class="note" x="74.4" y="334.0">n = 9,518: under-predicts at the low end</text>
 </svg>
 <!-- /chart:calibration -->
-        <figcaption><span class="label">Exhibit A, live data</span>Fill calibration from lobkit: 9,995 simulated orders across 209 Kalshi markets. Dot size grows with orders per bin. A perfect model sits on the dashed line.</figcaption>
+        <p class="plot-stats"><b><span>Brier</span>0.0502 vs 0.0539 base</b><b><span>worst gap</span>0.078</b><b><span>AUC</span>0.67–0.70</b></p>
+        <figcaption><span class="label">Exhibit A · real data, snapshot 2026-09-02</span>Fill calibration from lobkit: 9,995 simulated orders across 209 Kalshi markets. Dot size grows with orders per bin. A perfect model sits on the dashed line.</figcaption>
       </figure>
     </section>
 
@@ -96,7 +98,7 @@
         <div class="ex-text">
           <div class="meta"><span class="idx">A</span><span class="tag">Research</span><span>Market microstructure · 2026</span></div>
           <h3>lobkit</h3>
-          <p class="one">Rebuilds Kalshi limit-order books from L2 data and estimates the chance that a resting order fills. Every number carries a tag: observed, derived, estimated or assumed.</p>
+          <p class="one">Rebuilds Kalshi limit-order books from L2 data, models the chance that a resting order fills, and reports how far to trust each answer. Every number carries a tag: observed, derived, estimated or assumed.</p>
           <dl class="spec">
             <div><dt>Brier</dt><dd><strong data-count="0.0502" data-dp="4">0.0502</strong> vs 0.0539 base rate</dd></div>
             <div><dt>AUC</dt><dd><strong>0.67–0.70</strong> on a held-out half</dd></div>
@@ -114,7 +116,7 @@
           </div>
           <div class="limit">
             <p class="label">Stated limit</p>
-            <p><strong>44.6%</strong> of orders are ambiguous from L2 data alone. Whether they filled depends on where unseen cancellations sat, and no model closes that gap.</p>
+            <p><strong>44.6%</strong> of orders are ambiguous from L2 data alone. Whether they filled depends on where unseen cancellations sat, and no model closes that gap. Calibration is scored against the conservative lower-bound truth, so the simulator is not trusted for point fill estimates.</p>
           </div>
         </div>
       </article>
@@ -174,14 +176,14 @@
           <dl class="spec">
             <div><dt>Snapshot</dt><dd><strong data-count="144">144</strong> roles across 26 firms, Aug 28</dd></div>
           </dl>
-          <ul class="chips"><li>Python</li><li>Greenhouse / Lever APIs</li><li>link checking</li></ul>
+          <ul class="chips"><li>Python</li><li>Greenhouse, Lever + 3 ATS APIs</li><li>link checking</li></ul>
           <p class="links"><span class="muted">Code private</span></p>
         </div>
         <div class="ex-visual">
-          <p class="label">Roles per firm, top 8</p>
+          <p class="label">Roles per firm, top 9 of 26 (tie at 5)</p>
           <!-- chart:firms -->
-<svg class="chart bars" viewBox="0 0 420 248" role="img" aria-labelledby="firms-t">
-<title id="firms-t">Roles per firm, top 8 of 26, Aug 28 snapshot</title>
+<svg class="chart bars" viewBox="0 0 420 278" role="img" aria-labelledby="firms-t">
+<title id="firms-t">Roles per firm, top 9 of 26 including a tie, Aug 28 snapshot</title>
 <text class="tick" x="122" y="21" text-anchor="end">Jump Trading</text>
 <rect class="bar" style="--i:0" x="132" y="9" width="248.0" height="16" rx="3"/>
 <text class="val" x="388.0" y="21">29</text>
@@ -206,6 +208,9 @@
 <text class="tick" x="122" y="231" text-anchor="end">Qube RT</text>
 <rect class="bar" style="--i:7" x="132" y="219" width="42.8" height="16" rx="3"/>
 <text class="val" x="182.8" y="231">5</text>
+<text class="tick" x="122" y="261" text-anchor="end">Flow Traders</text>
+<rect class="bar" style="--i:8" x="132" y="249" width="42.8" height="16" rx="3"/>
+<text class="val" x="182.8" y="261">5</text>
 </svg>
 <!-- /chart:firms -->
         </div>
@@ -276,7 +281,7 @@ STALE          <i>!=</i> FALSE</pre>
       </div>
       <div class="about reveal">
         <p>I study Mathematics and Statistics at Columbia and graduate in May 2028.</p>
-        <p>I care most about whether a number is true. My models report what they cannot know. They run a control that should destroy the signal, and they choose parameters on held-out data.</p>
+        <p>I care most about whether a number is true. My models report what they cannot know. They run a control that should destroy the signal. Parameters are fit on a training half and chosen on a held-out half.</p>
         <p>I build with AI agents every day. I also build the systems that keep them in check: lanes, ledgers and reviewers. This site was built that way too, with separate design, content, build and fact-check agents.</p>
       </div>
     </section>
@@ -295,6 +300,6 @@ STALE          <i>!=</i> FALSE</pre>
     <span class="muted">Static HTML · no analytics</span>
   </footer>
 
-  <script src="assets/main.js?v=4" defer></script>
+  <script src="assets/main.js?v=5" defer></script>
 </body>
 </html>

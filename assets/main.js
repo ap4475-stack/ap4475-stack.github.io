@@ -29,7 +29,9 @@
   };
 
   // Reveal on scroll, staggered within the hero and the grid.
-  const reveals = document.querySelectorAll('.reveal');
+  // The hero is the signature: show it at once rather than waiting for the observer.
+  document.querySelectorAll('.hero .reveal').forEach((el) => el.classList.add('in'));
+  const reveals = document.querySelectorAll('.reveal:not(.in)');
   if (reduce || !('IntersectionObserver' in window)) {
     reveals.forEach((el) => el.classList.add('in', 'done'));
   } else {
