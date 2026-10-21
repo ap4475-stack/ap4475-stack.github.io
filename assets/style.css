@@ -67,6 +67,7 @@ h1, h2, h3 { font-family: var(--head); font-weight: 600; margin: 0; letter-spaci
   .nav nav a { padding: 12px 6px; }
   .brand { font-size: 0.8125rem; }
 }
+@media (max-width: 380px) { .nav nav .opt-xs { display: none; } }
 
 /* hero */
 .hero { padding-top: clamp(56px, 12vw, 128px); padding-bottom: 64px; border-bottom: 1px solid var(--line); }
